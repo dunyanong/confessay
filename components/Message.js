@@ -9,7 +9,7 @@ const Message = ({ children, description, timestamp }) => {
             <AiFillStar size={27}/>
           </div>
           <div>
-            <h2 className="font-semibold text-2xl text-gray-700 font-medium">{ timestamp.toDate().toDateString() }</h2>
+            <h2 className="font-semibold text-2xl text-gray-700 font-medium">Statement</h2>
           </div>
         </div>
       </div>
