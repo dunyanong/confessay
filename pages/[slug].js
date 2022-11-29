@@ -13,7 +13,7 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import { FaPaperPlane } from 'react-icons/Fa';
+import { FaPaperPlane } from 'react-icons/fa';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FullScreenNavbar } from "../components/FullScreenNavbar";
 import Link from "next/link";
