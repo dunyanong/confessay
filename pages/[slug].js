@@ -16,6 +16,7 @@ import {
 import { FaPaperPlane } from 'react-icons/fa';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FullScreenNavbar } from "../components/FullScreenNavbar";
+import { FaUserSecret } from 'react-icons/fa'
 import Link from "next/link";
 
 export default function Details() {
@@ -109,6 +110,11 @@ export default function Details() {
                     <img src={message.avatar} className="mr-2 w-6 h-6 rounded-full"/>
                   </div>
                 )}
+                {!user && (
+                  <div className="text-gray-900 mr-1">
+                    <FaUserSecret size={20}/>
+                  </div>
+                )}
                 <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold">{message.userName}</p>
                 <p className="text-sm text-gray-500 ">{message.time.toDate().toDateString()}</p>
               </div>
@@ -117,12 +123,6 @@ export default function Details() {
         </div>  
       ))}
       </div>
-
-
-
-
-
-
     </div>
   </div>
   );
