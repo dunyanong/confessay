@@ -42,7 +42,7 @@ const Home = () => {
         <ul className="flex">
         <li>
         <Link href="/" legacyBehavior>
-            <button className="">
+            <button>
               <h1 className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold italic tracking-wider">Confessay</h1>
             </button>
         </Link>
