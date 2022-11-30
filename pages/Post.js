@@ -33,7 +33,7 @@ const Post = () => {
             });
         return;
         }
-        if (post.description.length > 800) {
+        if (post.description.length > 1000) {
             toast.error("description is too long 🤡", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 1500,
@@ -81,7 +81,7 @@ const Post = () => {
 
     return  (
       <div>
-        <nav className="py-10 mb-12 flex justify-between items-center ">
+        <nav className="pt-10 mb-12 flex justify-between items-center ">
             <ul className="flex">
             <li>
             <Link href="/" legacyBehavior>
@@ -93,9 +93,10 @@ const Post = () => {
             </ul>
             <FullScreenNavbar />
         </nav>
-    
-    <div className="my-10 p-12 border-solid rounded-lg max-w-lg mx-auto">
-    <div className="text-start my-8">
+
+    <ToastContainer limit={1}/>
+    <div className="mt-2 my-10 md:my-10 p-12 border-solid rounded-lg max-w-lg mx-auto">
+    <div className="text-start mb-8 ">
       <h3 className="text-2xl font-bold font-medium">Rules</h3>
       <div>
         <p>
@@ -104,7 +105,7 @@ const Post = () => {
         <p className="text-red-600">Your accounts will be TERMINATED if you do not follow the rules.</p>
       </div>
     </div>
-    <ToastContainer limit={1}/>
+    
     <form onSubmit={submitPost}>
       <h1 className="text-2xl font-bold font-medium">
         {post.hasOwnProperty("id") ? "Edit your confession" : "Create a new confession"}
@@ -114,14 +115,14 @@ const Post = () => {
         <textarea
           value={post.description}
           onChange={(e) => setPost({ ...post, description: e.target.value })}
-          className="bg-gray-800 h-48 w-full text-white rounded-lg p-2 text-sm"
+          className="bg-gray-800 h-48 w-full md:h-96 text-white rounded-lg p-2 text-sm"
         ></textarea>
         <p
           className={`text-cyan-600 font-medium text-sm ${
-            post.description.length > 800 ? "text-red-600" : "text-red-600"
+            post.description.length > 1000 ? "text-red-600" : "text-red-600"
           }`}
         >
-          {post.description.length}/800
+          {post.description.length}/1000
         </p>
       </div>
       <button
