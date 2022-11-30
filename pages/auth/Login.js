@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../utils/firebase";
