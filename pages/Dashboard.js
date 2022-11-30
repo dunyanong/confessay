@@ -31,7 +31,7 @@ export default function Dashboard() {
       return;
     }
     if (!user) {
-      return route.push("/auth/login")
+      return route.push("/auth/Login")
     };
 
     const collectionRef = collection(db, "posts");
