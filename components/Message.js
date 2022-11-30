@@ -8,7 +8,7 @@ const Message = ({ children, description, username }) => {
           <div className="text-yellow-400">
             <AiFillStar size={27}/>
           </div>
-          <div>
+          <div className="mt-1">
             <h2 className="font-semibold text-2xl text-gray-700 font-medium">Statement</h2>
           </div>
         </div>
