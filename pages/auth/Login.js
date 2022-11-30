@@ -30,15 +30,17 @@ const Login = () => {
 
   return (
     <div>
-      <nav className="py-10 mb-12 flex justify-between items-center">
-        <ul className="flex">
-        <li>
+      <nav className="py-10 mb-12 flex justify-between items-center ">
+          <ul className="flex">
+          <li>
           <Link href="/" legacyBehavior>
-            <button className="text-2xl md:text-6xl text-cyan-700 font-cormorant italic">Confessay</button>
+              <button>
+              <h1 className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold italic tracking-wider">Confessay</h1>
+              </button>
           </Link>
-        </li>
-        </ul>
-        <FullScreenNavbar />
+          </li>
+          </ul>
+          <FullScreenNavbar />
       </nav>
 
       <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg">
