@@ -93,8 +93,6 @@ const Post = () => {
             </ul>
             <FullScreenNavbar />
         </nav>
-
-    <ToastContainer limit={1}/>
     <div className="mt-2 my-10 md:my-10 p-12 border-solid rounded-lg max-w-lg mx-auto">
     <div className="text-start mb-8 ">
       <h3 className="text-2xl font-bold font-medium">Rules</h3>
