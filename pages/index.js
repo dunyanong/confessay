@@ -44,7 +44,7 @@ const Home = () => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <nav className="py-10 mb-12 flex justify-between items-center ">
+      <nav className="py-10 mb-12 flex justify-between items-center px-5">
         <ul className="flex">
         <li>
         <Link href="/" legacyBehavior>
