@@ -37,7 +37,7 @@ export default function Details() {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 1500,
     })
-    return router.push("/auth/login");
+    return router.push("/auth/Login");
     };
 
     if (!message) {
