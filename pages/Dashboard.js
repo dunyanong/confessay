@@ -98,7 +98,15 @@ export default function Dashboard() {
               </Link>
               <div className="flex gap-4 font-medium">
                 <button
-                  onClick={() => deletePost(post.id)}
+                  onClick={
+                    () => {              
+                      toast.error("Post has been deleted 🗑️ ", {
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 1500,
+                    });
+                    return deletePost(post.id);
+                    }
+                  }
                   className="text-pink-600 flex items-center justify-center gap-2 py-2 text-sm"
                 >
                   <BsTrash2Fill className="text-2xl" /> Delete
