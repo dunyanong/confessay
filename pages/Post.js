@@ -92,7 +92,7 @@ const Post = () => {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
-        </Head>       
+        </Head>
         <nav className="pt-10 mb-12 flex justify-between items-center ">
             <ul className="flex">
             <li>
