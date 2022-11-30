@@ -70,7 +70,7 @@ const Post = () => {
     //Check our user
     const checkUser = async () => {
         if (loading) return;
-        if (!user) route.push("/auth/login");
+        if (!user) route.push("/auth/Login");
         if (routeData.id) {
         setPost({ description: routeData.description, id: routeData.id });
         }
@@ -138,6 +138,11 @@ const Post = () => {
       <button
         type="submit"
         className="w-full bg-cyan-600 text-white p-2 my-2 rounded-lg text-sm font-medium"
+        onClick={() => {
+          toast.success("Submitted 🔥", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 1500,})
+        }}
       >
         Submit
       </button>
