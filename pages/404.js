@@ -15,16 +15,18 @@ const Error = () => {
     })
     return (
         <div>
-            <nav className="py-10 mb-12 flex justify-between items-center">
+        <nav className="py-10 mb-12 flex justify-between items-center ">
             <ul className="flex">
             <li>
             <Link href="/" legacyBehavior>
-                <button className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold">Confessay</button>
+                <button>
+                <h1 className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold italic tracking-wider">Confessay</h1>
+                </button>
             </Link>
             </li>
             </ul>
             <FullScreenNavbar />
-            </nav>
+        </nav>
             <div className="text-center p-10 mt-10">  
                 <h2 className="text-6xl text-center">404</h2>
                 <p className="my-1">There is nothing here</p>
