@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
