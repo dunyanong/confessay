@@ -94,7 +94,7 @@ const Post = () => {
             <FullScreenNavbar />
         </nav>
     
-    <div className="my-10 p-12 border-solid rounded-lg max-w-md mx-auto">
+    <div className="my-10 p-12 border-solid rounded-lg max-w-lg mx-auto">
     <div className="text-start my-8">
       <h3 className="text-2xl font-bold font-medium">Rules</h3>
       <div>
