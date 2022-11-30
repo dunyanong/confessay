@@ -22,7 +22,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (user) {
-      route.push("/");
+      route.push("/Post");
     } else {
       console.log("login");
     }
