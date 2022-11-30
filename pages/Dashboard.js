@@ -16,6 +16,8 @@ import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
 import { FullScreenNavbar } from "../components/FullScreenNavbar";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer,toast } from 'react-toastify';
 
 export default function Dashboard() {
   const route = useRouter();
@@ -63,7 +65,7 @@ export default function Dashboard() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
-      </Head>     
+      </Head>
       <nav className="py-10 mb-12 flex justify-between items-center ">
           <ul className="flex">
           <li>
@@ -115,9 +117,12 @@ export default function Dashboard() {
       <button
         className="font-medium text-white bg-red-500 py-2 px-4 mt-10 rounded-lg"
         onClick={() => {
-            auth.signOut();
-            route.push("/");
-            return;
+          auth.signOut();
+          toast.success("Signed out 🤘", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 1500,
+          })
+          return route.push("/");
         }}
       >
         Sign out
