@@ -1,6 +1,6 @@
 import { AiFillStar } from 'react-icons/ai';
 
-const Message = ({ children, description, timestamp }) => {
+const Message = ({ children, description, username }) => {
   return (
     <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
       <div className="flex justify-between items-center">
@@ -15,7 +15,7 @@ const Message = ({ children, description, timestamp }) => {
       </div>
 
       <div className="py-4">
-        <p className="text-gray-700 font-medium text-l">{description}</p>
+        <p className="text-gray-700 font-medium text-l whitespace-pre-line">{description}</p>
       </div>
       <div className="text-gray-700">
         <p className="font-medium text-sm">{children}</p>
