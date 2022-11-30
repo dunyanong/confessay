@@ -67,16 +67,18 @@ export default function Details() {
   return (
     <div>
 
-      <nav className="py-10 mb-12 flex justify-between items-center">
-        <ul className="flex">
-        <li>
-          <Link href="/" legacyBehavior>
-            <button className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold">Confessay</button>
-          </Link>
-        </li>
-        </ul>
-        <FullScreenNavbar />
-      </nav>
+        <nav className="py-10 mb-12 flex justify-between items-center ">
+            <ul className="flex">
+            <li>
+            <Link href="/" legacyBehavior>
+                <button>
+                <h1 className="text-2xl md:text-7xl text-cyan-700 font-cormorant font-bold italic tracking-wider">Confessay</h1>
+                </button>
+            </Link>
+            </li>
+            </ul>
+            <FullScreenNavbar />
+        </nav>
       
     <Message {...routeData}></Message>
 
