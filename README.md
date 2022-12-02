@@ -6,7 +6,7 @@
 <h3>Website 👇</h3> 
 <div>
 <a href="https://confessay.vercel.app/" target="_blank">
-  <img src="confessaytemplate.png" />
+  <img src="ipadconfessay.png" />
 </a>
 </div>
 
