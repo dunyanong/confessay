@@ -48,7 +48,7 @@ export const MobileNav = ({open, setOpen}) => {
     )
 }
 
-export const FullScreenNavbar = () => {
+export const Hamburger = () => {
     const [open, setOpen] = useState(false);
     return (
         <div>
