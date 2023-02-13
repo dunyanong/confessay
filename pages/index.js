@@ -37,7 +37,7 @@ const Home = () => {
             <div className="font-medium">
             <Message key={post.id} {...post}>
                 <button className="font-medium font-sm text-teal-600">
-                  {post.comments?.length > 0 ? post.comments?.length : 0} comments
+                {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
                 </button>
             </Message>
             </div>

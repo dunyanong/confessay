@@ -64,10 +64,10 @@ export default function Dashboard() {
       <div>
         {posts.map((post) => {
           return (
-            <Message {...post} key={post.id}>
+            <Message key={post.id} {...post} >
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }} >
               <button className="font-medium font-sm mb-2 text-teal-600">
-                {post.comments?.length > 0 ? post.comments?.length : 0} comments
+                {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
               </button>
               </Link>
               <div className="flex gap-4 font-medium">

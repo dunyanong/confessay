@@ -4,22 +4,25 @@ import { useState } from 'react';
 const Message = ({ children, description, username, timestamp, subject = "Confession" }) => {
   const [showMore, setShowMore] = useState(false);
 
-  const today = new Date();
-  const messageDate = new Date(timestamp.seconds * 1000);
-  const timeDifference = today - messageDate;
-  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  let today, messageDate, timeDifference, days, dateString;
 
-  let dateString;
-  if (days >= 3) {
-    if (today.getFullYear() === messageDate.getFullYear()) {
-      dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' });
+  if (timestamp) {
+    today = new Date();
+    messageDate = new Date(timestamp.seconds * 1000);
+    timeDifference = today - messageDate;
+    days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (days >= 3) {
+      if (today.getFullYear() === messageDate.getFullYear()) {
+        dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' });
+      } else {
+        dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+    } else if (days === 0) {
+      dateString = messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     } else {
-      dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
+      dateString = `${days} days ago`;
     }
-  } else if (days === 0) {
-    dateString = messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  } else {
-    dateString = `${days} days ago`;
   }
   
   return (
