@@ -7,34 +7,34 @@ export const MobileNav = ({open, setOpen}) => {
     const [user, loading] = useAuthState(auth);
 
     return (
-        <div className={`absolute top-0 left-0 h-screen w-screen bg-white transform ${open ? "-translate-y-0" : "-translate-y-full"} transition-transform duration-300 ease-in-out filter  `}>
+        <div className={`absolute top-0 left-0 h-screen w-screen bg-white transform ${open ? "-translate-y-0" : "-translate-y-full"} transition-transform duration-300 ease-in-out filter z-50  `}>
             <div className="flex flex-col justify-center items-center mt-28">
-                <div className="text-2xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
                 <Link href="/" legacyBehavior>
                     <a>Home</a>
                 </Link>
                 </div>
-                <div className="text-2xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
                 <Link href="/CreatorMessage" legacyBehavior>
-                    <a>Creator's Message</a>
+                    <a>About</a>
                 </Link>
                 </div>
 
-                <div className="text-2xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
                 {!user && (
                     <Link href={"/auth/Login"} legacyBehavior>
-                        <a>Sign In Now</a>
+                        <a>Login</a>
                     </Link>
                 )}
                 {user && (
                     <div className="flex items-center gap-4">
                     <Link href="/Post" legacyBehavior>
-                        <a>New Confession</a>
+                        <a>Confess</a>
                     </Link>
                     </div>
                 )}
                 </div>                
-                <div className="text-2xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
                     {user && (
                         <div className="flex items-center gap-4">
                         <Link href="/Dashboard" legacyBehavior>
