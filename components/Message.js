@@ -40,9 +40,9 @@ const Message = ({ children, description, username, timestamp, subject = "Confes
       </div>
 
       <div className="py-4">
-        <p className="text-gray-700 font-medium text-l whitespace-pre-line break-words">
-          {description.length > 515 ? `${description.slice(0, 512)}...` : description}
-        </p>
+      <p className="text-gray-700 font-medium text-l whitespace-pre-line break-words">
+        {description?.length > 515 ? `${description.slice(0, 512)}...` : description}
+      </p>
       </div>
       <div className="text-gray-700">
         <p className="font-medium text-sm">{children}</p>
