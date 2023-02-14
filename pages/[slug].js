@@ -1,4 +1,4 @@
-import Message from "../components/Message";
+import AllDetails from '../components/confession/AllDetails';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { auth, db } from "../utils/firebase";
@@ -18,6 +18,7 @@ import { Hamburger } from "../components/Hamburger";
 import { FaUserSecret } from 'react-icons/fa'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify';
+import Head from 'next/head';
 
 export default function Details() {
   const router = useRouter();
@@ -76,7 +77,10 @@ export default function Details() {
   }, [router.isReady]);
   return (
     <div>
-    <Message {...routeData}></Message>
+    <Head>
+      <title>Confessay</title>
+    </Head>
+    <AllDetails {...routeData}></AllDetails>
 
     <div className="mt-7">
     <h2 className="font-bold ml-1 mb-1">Reply confession</h2>

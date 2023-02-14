@@ -46,7 +46,7 @@ const Navbar = () => {
                 <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
                     {user && (
                         <div className="flex items-center gap-4">
-                        <Link href="/Dashboard" legacyBehavior>
+                        <Link href="/Profile" legacyBehavior>
                             <a>Profile</a>
                         </Link>
                         </div>

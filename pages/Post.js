@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify';
 import { auth } from "../utils/firebase";
 import Link from "next/link";
+import Head from "next/head";
 
 const Post = () => {
     //Form state
@@ -80,6 +81,9 @@ const Post = () => {
 
     return  (
       <div>
+        <Head>
+          <title>Confessay</title>
+        </Head>
         <div className="mt-2 my-10 md:my-10 p-12 border-solid rounded-lg max-w-3xl mx-auto">
         <div className="text-start mb-8 ">
           <h3 className="text-2xl font-bold font-medium">Rules</h3>

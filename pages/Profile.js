@@ -10,12 +10,13 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import Message from "../components/Message";
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify';
+import ClickMore from "../components/confession/ClickMore";
+import Head from "next/head";
 
 export default function Dashboard() {
   const route = useRouter();
@@ -53,6 +54,9 @@ export default function Dashboard() {
 
   return (
     <div>
+      <Head>
+        <title>Confessay</title>
+      </Head>
       <div className="flex justify-center items-center">
       {user && (
         <div>
@@ -64,7 +68,7 @@ export default function Dashboard() {
       <div>
         {posts.map((post) => {
           return (
-            <Message key={post.id} {...post} >
+            <ClickMore key={post.id} {...post} >
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }} >
               <button className="font-medium font-sm mb-2 text-teal-600">
                 {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
@@ -92,7 +96,7 @@ export default function Dashboard() {
                   </button>
                 </Link>
               </div>
-            </Message>
+            </ClickMore>
           );
         })}
       </div>

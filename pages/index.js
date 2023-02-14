@@ -1,10 +1,11 @@
 import React from 'react';
-import Message from "../components/Message";
 import { useEffect, useState } from "react";
 import { db, auth } from "../utils/firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Front from '../components/confession/Front';
+import Head from 'next/head';
 
 const Home = () => {
   // Create a state with all the posts
@@ -29,20 +30,25 @@ const Home = () => {
   }, []);
 
   return (
-      <div className="my-10 md:p-5">
+    <div>
+      <Head>
+        <title>Confessay</title>
+      </Head>
+      <div className="my-10 md:p-5">        
         <h2 className="md:text-4xl text-3xl text-center font-medium font-semibold text-cyan-700">All Confessions</h2>
         { isPending && <h3 className="text-xl text-center pt-3 text-gray-800 font-medium">Loading.....</h3> }
         { allPosts.map((post) => (
           <Link href={{ pathname: `/${post.id}`, query: { ...post } }} key={post.id}>
             <div className="font-medium">
-            <Message key={post.id} {...post}>
+            <Front key={post.id} {...post}>
                 <button className="font-medium font-sm text-teal-600">
                 {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
                 </button>
-            </Message>
+            </Front>
             </div>
           </Link>
         )) }
+      </div>
       </div>
   );
 }
