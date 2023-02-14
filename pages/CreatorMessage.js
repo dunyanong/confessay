@@ -2,6 +2,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../utils/firebase";
 import { Hamburger } from "../components/Hamburger";
 import { useState } from "react";
+import Head from "next/head";
 
 const CreatorMessage = () => {
     const [user, loading] = useAuthState(auth);
@@ -42,7 +43,10 @@ const CreatorMessage = () => {
     };
 
     return (
-        <div className="creatorContainer">
+        <div>
+            <Head>
+                <title>Confessay</title>
+            </Head>
         <div>
             <h2 className="text-3xl text-start font-medium font-semibold text-cyan-700">Rules</h2>
         </div>

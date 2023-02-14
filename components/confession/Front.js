@@ -1,7 +1,7 @@
 import { AiFillStar } from 'react-icons/ai';
 import { useState } from 'react';
 
-const Message = ({ children, description, username, timestamp, subject = "Confession" }) => {
+const Front = ({ children, description, username, timestamp, subject = "Confession" }) => {
   const [showMore, setShowMore] = useState(false);
 
   let today, messageDate, timeDifference, days, dateString;
@@ -51,4 +51,4 @@ const Message = ({ children, description, username, timestamp, subject = "Confes
   );
 }
 
-export default Message;
+export default Front;

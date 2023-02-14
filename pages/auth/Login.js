@@ -42,6 +42,10 @@ const Login = () => {
   }, [user]);
 
   return (
+    <div>
+    <Head>
+      <title>Confessay</title>
+    </Head>
     <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg">
       <h2 className="text-2xl font-semibold font-medium">Join Today</h2>
       <div className="py-4">
@@ -54,6 +58,7 @@ const Login = () => {
           Sign in with Google
         </button>
       </div>
+    </div>
     </div>
   );
 }
