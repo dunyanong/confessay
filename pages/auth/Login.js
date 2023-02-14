@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from 'react-toastify';
+import Head from "next/head";
 
 const Login = () => {
   const route = useRouter();
