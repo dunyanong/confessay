@@ -7,7 +7,7 @@ import { Hamburger } from './Hamburger';
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
     return (
-        <nav className="py-5 mb-12 mt-5 mx-5">
+        <nav className="py-5 mb-12 mt-5 w-full max-w-3xl mx-auto">
         <div className="hidden md:visible md:flex md:justify-between ">
         <div className="">
             <ul className="flex items-center">
@@ -56,7 +56,7 @@ const Navbar = () => {
     
         </div>
     
-        <div className="flex justify-between md:mt-3 md:hidden">
+        <div className="flex justify-between md:mt-3 md:hidden w-full max-w-3xl mx-auto px-10">
         <div className="">
             <ul className="flex items-center">
               <Link legacyBehavior href="/">

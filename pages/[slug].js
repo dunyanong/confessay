@@ -76,7 +76,7 @@ export default function Details() {
     getComments();
   }, [router.isReady]);
   return (
-    <div>
+    <div className='w-full max-w-3xl mx-auto'>
     <Head>
       <title>Confessay</title>
     </Head>

@@ -53,14 +53,14 @@ export default function Dashboard() {
   }, [user, loading]);
 
   return (
-    <div>
+    <div className="w-full max-w-3xl mx-auto">
       <Head>
         <title>Confessay</title>
       </Head>
       <div className="flex justify-center items-center">
       {user && (
         <div>
-          <img className="w-12 rounded-full cursor-pointer mr2" src={user.photoURL}/>
+          <img className="w-12 h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
         </div>
       )}
         <h1 className="text-3xl font-medium font-semibold text-cyan-700 ml-2">Your posts</h1>

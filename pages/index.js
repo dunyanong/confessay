@@ -34,7 +34,7 @@ const Home = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="my-10 md:p-5">        
+      <div className="my-10 md:p-5 w-full max-w-3xl mx-auto">        
         <h2 className="md:text-4xl text-3xl text-center font-medium font-semibold text-cyan-700">All Confessions</h2>
         { isPending && <h3 className="text-xl text-center pt-3 text-gray-800 font-medium">Loading.....</h3> }
         { allPosts.map((post) => (

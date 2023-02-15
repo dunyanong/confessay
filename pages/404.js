@@ -17,7 +17,7 @@ const Error = () => {
             <Head>
             <title>Confessay</title> 
             </Head>
-        <div className="text-center p-10 mt-10">  
+        <div className="text-center p-10 mt-10 w-full max-w-3xl mx-auto">  
             <h2 className="text-6xl text-center">404</h2>
             <p className="my-1">There is nothing here</p>
             <h3>Bringing you back to the homepage.....</h3>
