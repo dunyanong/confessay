@@ -14,7 +14,7 @@ import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer,toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import ClickMore from "../components/confession/ClickMore";
 import Head from "next/head";
 
@@ -22,8 +22,6 @@ export default function Dashboard() {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [posts, setPosts] = useState([]);
-  const [allPosts, setAllPosts] = useState([]);
-  
 
   const getData = async () => {
     if (loading) {
