@@ -6,8 +6,6 @@ Confessay is a web application built using Next.js, Tailwind, React, and Firebas
 
 - Users can confess their negative emotions anonymously.
 - Users can view and comment on other people's confessions.
-- Users can react to confessions with emojis.
-- A real-time dashboard showing the number of confessions received and user engagement metrics.
 
 ## Technologies Used
 
