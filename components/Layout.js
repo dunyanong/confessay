@@ -1,11 +1,11 @@
 import Footer  from "./Footer";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 
 const Layout = ({children}) => {
     return (
-        <div className="font-inter">
+        <div className="font-inter w-full min-h-screen bg-gradient-to-br from-rose-100 via-blue-50 to-purple-100">
             <Navbar />
-            <main className="px-5 md:px-20">{children}</main>
+            <main className="px-10 md:px-20 pt-20 ">{children}</main>
             <Footer/>
         </div>
     );

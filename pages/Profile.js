@@ -51,7 +51,7 @@ export default function Dashboard() {
   }, [user, loading]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
       <Head>
         <title>Confessay</title>
       </Head>
@@ -61,7 +61,7 @@ export default function Dashboard() {
           <img className="w-12 h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
         </div>
       )}
-        <h1 className="tetx-center font-semibold text-3xl text-cyan-600 hover:cursor-pointer">Your posts</h1>
+        <h1 className="tetx-center font-semibold text-3xl text-black hover:cursor-pointer">Your posts</h1>
       </div>
       <div>
         {posts.map((post) => {

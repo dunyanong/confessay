@@ -34,8 +34,8 @@ const Home = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="my-10 md:p-5 w-full max-w-3xl mx-auto">        
-        <h2 className="text-center font-semibold text-3xl text-cyan-600 hover:cursor-pointer">All Confessions</h2>
+      <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">        
+        <h2 className="text-center font-semibold text-3xl text-black hover:cursor-pointer">All Confessions</h2>
         { isPending && <h3 className="text-xl text-center pt-3 text-gray-800">Loading.....</h3> }
         { allPosts.map((post) => (
           <Link href={{ pathname: `/${post.id}`, query: { ...post } }} key={post.id}>

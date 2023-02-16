@@ -9,15 +9,15 @@ const CreatorMessage = () => {
     const [user, loading] = useAuthState(auth);
 
     return (
-        <div className="w-full max-w-3xl mx-auto">
+        <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
             <Head>
                 <title>Confessay</title>
             </Head>
         <div>
-            <h2 className="font-semibold text-3xl text-cyan-600 hover:cursor-pointer">Rules</h2>
+            <h2 className="font-semibold text-3xl text-black hover:cursor-pointer">Rules</h2>
         </div>
-        <div className="mb-11 mt-5">
-            <ul className="">
+        <div className="">
+            <ul>
                 <div className="my-3 ">
                     <h3 className="text-2xl text-gray-700">1. It must be a confession.</h3>
                     <p className="text-gray-500">The confession can be the current state of mind, feelings and hardships of coping.</p>
@@ -44,7 +44,7 @@ const CreatorMessage = () => {
 
 
         <div className="mb-4 ml-1">
-            <h2 className="font-semibold text-3xl text-cyan-600 hover:cursor-pointer">Questions</h2>
+            <h2 className="font-semibold text-3xl text-black hover:cursor-pointer">Questions</h2>
         </div>
 
         <RulesDropdown />

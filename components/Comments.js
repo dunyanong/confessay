@@ -5,7 +5,7 @@ const Comments = ({ allMessage, user }) => {
   return (
     <div className="w-26">
       {allMessage?.map((message) => (
-        <div className="py-6 mb-2 text-base bg-white rounded-lg" key={message.id}>
+        <div className="py-6 mb-2 text-base rounded-lg" key={message.id}>
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center">
               {user && (

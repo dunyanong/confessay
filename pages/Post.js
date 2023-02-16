@@ -103,7 +103,7 @@ const Post = () => {
             <h3 className="text-lg font-bold">Subject</h3>
             <input 
               type="text" 
-              className="w-full border border-gray-500 p-2 rounded-lg my-2" 
+              className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={post.subject} 
               onChange={(e) => setPost({...post, subject: e.target.value})} 
               placeholder="Confession Subject" 
@@ -112,7 +112,7 @@ const Post = () => {
           <div className="py-2">
             <h3 className="text-lg font-bold">Description</h3>
             <textarea 
-              className="w-full border border-gray-500 p-2 rounded-lg my-2" 
+              className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={post.description} 
               onChange={(e) => setPost({...post, description: e.target.value})} 
               placeholder="Write your confession here..." 

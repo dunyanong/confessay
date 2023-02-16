@@ -1,9 +1,4 @@
-import { AiFillStar } from 'react-icons/ai';
-import { useState } from 'react';
-
-const Details = ({ children, description, username, timestamp, subject = "Confession" }) => {
-  const [showMore, setShowMore] = useState(false);
-
+const AllDetails = ({ children, description, username, timestamp, subject = "Confession" }) => {
   let today, messageDate, timeDifference, days, dateString;
 
   if (timestamp) {
@@ -26,23 +21,20 @@ const Details = ({ children, description, username, timestamp, subject = "Confes
   }
   
   return (
-    <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
+    <div className="py-4 px-8 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="text-yellow-400">
-            <AiFillStar size={27}/>
-          </div>
           <div className="mt-1">
             <h2 className="font-semibold text-2xl text-gray-700">{subject}</h2>
+            <p className='text-lg text-gray-500'>{dateString}</p>
           </div>
-        </div>        
-        <p className='text-lg text-gray-700'>{dateString}</p>
+        </div>                
       </div>
 
       <div className="py-4">
-      <p className="text-gray-700 whitespace-pre-line break-words">
-        {description}
-      </p>
+        <p className="text-gray-700 whitespace-pre-line break-words">
+          {description}
+        </p>
       </div>
       <div className="text-gray-700">
         <p className="text-sm">{children}</p>
@@ -51,4 +43,4 @@ const Details = ({ children, description, username, timestamp, subject = "Confes
   );
 }
 
-export default Details;
+export default AllDetails;
