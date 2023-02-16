@@ -9,18 +9,18 @@ export const MobileNav = ({open, setOpen}) => {
     return (
         <div className={`absolute top-0 left-0 h-screen w-screen bg-white transform ${open ? "-translate-y-0" : "-translate-y-full"} transition-transform duration-300 ease-in-out filter z-50  `}>
             <div className="flex flex-col justify-center items-center mt-28">
-                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="py-4 hover:underline text-sm md:text-base font-semibold">
                 <Link href="/" legacyBehavior>
                     <a>Home</a>
                 </Link>
                 </div>
-                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="py-4 hover:underline text-sm md:text-base font-semibold">
                 <Link href="/CreatorMessage" legacyBehavior>
                     <a>About</a>
                 </Link>
                 </div>
 
-                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="py-4 hover:underline text-sm md:text-base font-semibold">
                 {!user && (
                     <Link href={"/auth/Login"} legacyBehavior>
                         <a>Login</a>
@@ -34,7 +34,7 @@ export const MobileNav = ({open, setOpen}) => {
                     </div>
                 )}
                 </div>                
-                <div className="text-xl font-bold my-4 text-gray-800 hover:text-cyan-700 font-medium">
+                <div className="py-4 hover:underline text-sm md:text-base font-semibold">
                     {user && (
                         <div className="flex items-center gap-4">
                         <Link href="/Profile" legacyBehavior>

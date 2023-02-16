@@ -35,11 +35,11 @@ const Home = () => {
         <title>Confessay</title>
       </Head>
       <div className="my-10 md:p-5 w-full max-w-3xl mx-auto">        
-        <h2 className="md:text-4xl text-3xl text-center font-medium font-semibold text-cyan-700">All Confessions</h2>
-        { isPending && <h3 className="text-xl text-center pt-3 text-gray-800 font-medium">Loading.....</h3> }
+        <h2 className="text-center font-semibold text-3xl text-cyan-600 hover:cursor-pointer">All Confessions</h2>
+        { isPending && <h3 className="text-xl text-center pt-3 text-gray-800">Loading.....</h3> }
         { allPosts.map((post) => (
           <Link href={{ pathname: `/${post.id}`, query: { ...post } }} key={post.id}>
-            <div className="font-medium">
+            <div>
             <Front key={post.id} {...post}>
                 <button className="font-medium font-sm text-teal-600">
                 {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments

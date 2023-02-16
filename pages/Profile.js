@@ -61,18 +61,18 @@ export default function Dashboard() {
           <img className="w-12 h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
         </div>
       )}
-        <h1 className="text-3xl font-medium font-semibold text-cyan-700 ml-2">Your posts</h1>
+        <h1 className="tetx-center font-semibold text-3xl text-cyan-600 hover:cursor-pointer">Your posts</h1>
       </div>
       <div>
         {posts.map((post) => {
           return (
             <ClickMore key={post.id} {...post} >
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }} >
-              <button className="font-medium font-sm mb-2 text-teal-600">
+              <button className="font-sm mb-2 text-teal-600">
                 {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
               </button>
               </Link>
-              <div className="flex gap-4 font-medium">
+              <div className="flex gap-4">
                 <button
                   onClick={
                     () => {              
@@ -99,7 +99,7 @@ export default function Dashboard() {
         })}
       </div>
       <button
-        className="font-medium text-white bg-red-500 py-2 px-4 mt-10 rounded-lg"
+        className="text-white bg-red-500 py-2 px-4 mt-10 rounded-lg"
         onClick={() => {
           auth.signOut();
           toast.success("Signed out 🤘", {

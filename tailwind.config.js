@@ -13,9 +13,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        dosis: 'Dosis',
-        cormorant: 'Cormorant',
-        medium: 'Martel Sans'
+        inter: 'Inter',
       },
       backgroundImage: {
         'bg-img-1': "url('../img/bg-img-1.png')",

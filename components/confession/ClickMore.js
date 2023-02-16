@@ -37,20 +37,20 @@ const ClickMore = ({ children, description, username, timestamp, subject = "Conf
             <AiFillStar size={27}/>
           </div>
           <div className="mt-1">
-            <h2 className="font-semibold text-2xl text-gray-700 font-medium">{subject}</h2>
+            <h2 className="font-semibold text-2xl text-gray-700">{subject}</h2>
           </div>
         </div>        
-        <p className='text-lg text-gray-700 font-medium'>{dateString}</p>
+        <p className='text-lg text-gray-700'>{dateString}</p>
       </div>
 
       <div className="py-4">
-        <p className={`text-gray-700 font-medium text-l whitespace-pre-line break-words ${showMore ? '' : 'line-clamp-3'}`}>
+        <p className={`text-gray-700 whitespace-pre-line break-words ${showMore ? '' : 'line-clamp-3'}`}>
           {description}
         </p>
         <span className="text-blue-800 cursor-pointer" onClick={toggleShowMore}>{showMore ? 'Read less' : 'Read more'}</span>
       </div>
       <div className="text-gray-700">
-        <p className="font-medium text-sm">{children}</p>
+        <div className="text-sm">{children}</div>
       </div>
     </div>
   );

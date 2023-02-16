@@ -80,21 +80,21 @@ const Login = () => {
       <title>Confessay</title>
     </Head>
     <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg">
-      <h2 className="text-2xl font-semibold font-medium">Join Today</h2>
+      <h2 className="text-2xl font-semibold">Join Today</h2>
       <div className="py-4">
-        <h3 className="py-4 font-medium">Sign in with one of the providers</h3>
+        <h3 className="py-4">Sign in with one of the providers</h3>
         <button
           onClick={GoogleLogin}
-          className="text-white bg-gray-700 w-full font-medium rounded-lg flex align-middle p-4 gap-2"
+          className="text-white bg-gray-700 w-full rounded-lg flex align-middle p-4 gap-2"
         >
-          <AiOutlineGoogle className="text-2xl font-medium" />
+          <AiOutlineGoogle className="text-2xl" />
           Sign in with Google
         </button>
         <button
           onClick={FacebookLogin}
-          className="text-white bg-blue-600 w-full font-medium rounded-lg flex align-middle p-4 gap-2 mt-4"
+          className="text-white bg-blue-600 w-full rounded-lg flex align-middle p-4 gap-2 mt-4"
         >
-          <AiFillFacebook className="text-2xl font-medium" />
+          <AiFillFacebook className="text-2xl" />
           Sign in with Facebook
         </button>
       </div>
