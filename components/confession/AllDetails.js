@@ -25,14 +25,14 @@ const AllDetails = ({ children, description, username, timestamp, subject = "Con
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="mt-1">
-            <h2 className="font-semibold text-2xl text-gray-700">{subject}</h2>
-            <p className='text-lg text-gray-500'>{dateString}</p>
+            <h2 className="font-semibold text-xl text-gray-700">{subject}</h2>
+            <p className='text-base text-gray-500'>{dateString}</p>
           </div>
         </div>                
       </div>
 
       <div className="py-4">
-        <p className="text-gray-700 whitespace-pre-line break-words">
+        <p className="text-gray-700 text-sm whitespace-pre-line break-words">
           {description}
         </p>
       </div>
