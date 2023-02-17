@@ -1,56 +1,59 @@
-import React from 'react';
-import { useEffect, useState } from "react";
-import { db, auth } from "../utils/firebase";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import Head from "next/head";
 import Link from "next/link";
-import { useAuthState } from "react-firebase-hooks/auth";
-import Front from '../components/confession/Front';
-import Head from 'next/head';
+import { AiFillHeart } from 'react-icons/ai'
 
-const Home = () => {
-  // Create a state with all the posts
-  const [allPosts, setAllPosts] = useState([]);
-  const [isPending, setIsPending] = useState(true);
-  const [user, loading] = useAuthState(auth);
+// import image
+import spideyImage  from '../img/spiderman.png'
+import Image from "next/image";
 
-  const getPosts = async () => {
-    const collectionRef = collection(db, "posts");
-    const q = query(collectionRef, orderBy("timestamp", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setAllPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    });
-    return unsubscribe;
-  };
-
-  useEffect(() => {
-    getPosts()
-      .then(() => {
-        setIsPending(false);
-      })
-  }, []);
-
-  return (
-    <div>
-      <Head>
-        <title>Confessay</title>
-      </Head>
-      <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">        
-        <h2 className="text-center font-semibold text-3xl text-black hover:cursor-pointer">All Confessions</h2>
-        { isPending && <h3 className="text-xl text-center pt-3 text-gray-800">Loading.....</h3> }
-        { allPosts.map((post) => (
-          <Link href={{ pathname: `/${post.id}`, query: { ...post } }} key={post.id}>
+const index = () => {
+    return (
+        <div className="md:px-5 w-full max-w-3xl mx-auto pt-20">
+            <Head>
+            <title>Confessay</title>
+            </Head>            
             <div>
-            <Front key={post.id} {...post}>
-                <button className="font-medium font-sm text-teal-600">
-                {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
-                </button>
-            </Front>
-            </div>
-          </Link>
-        )) }
-      </div>
-      </div>
-  );
-}
+                <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">Share your burdens, lighten your heart.</h1>
+            </div>  
 
-export default Home;
+            <div className="py-4 px-8 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
+            <div className="flex items-center pb-3">
+                <Image src={spideyImage} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
+                <div>
+                    <h1 className="font-semibold text-xl text-gray-900">SpideyLover</h1>    
+                    <p className='text-xs text-gray-500'>10 minutes ago</p>
+                </div>            
+            </div>
+            <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                <div className="mt-1">
+                    <h2 className="font-semibold text-xl text-gray-700">I'm not sure what I'm doing with my life</h2>                    
+                </div>
+                </div>                
+            </div>
+
+            <div className="py-4">
+                <p className="text-gray-700 text-sm whitespace-pre-line break-words">
+                I'm in my mid-twenties and I feel lost. I don't have a clear idea of what I want to do with my life, and it's scary to see my peers succeeding while I feel stuck. I hope that confessing here will help me find some clarity.
+                </p>
+            </div>
+            <div className="text-teal-600">
+                <p className="text-sm">3 comments</p>
+            </div>
+            </div> 
+
+
+            <div>
+                <p className="mt-6 text-base md:text-lg text-slate-600 text-center max-w-3xl mx-auto">Connect with a supportive community on our modern web app. Our safe and user-friendly platform allows you to release negative emotions and live life to the fullest.</p>
+            </div>               
+            <Link href='/auth/Login' legacyBehavior>
+            <button className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black">
+                <p>Get Started</p>
+                <AiFillHeart className="fill-current w-4 h-4 mr-2" />              
+            </button>            
+          </Link>   
+        </div>
+    );
+}
+ 
+export default index;

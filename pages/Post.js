@@ -84,7 +84,7 @@ const Post = () => {
         <Head>
           <title>Confessay</title>
         </Head>
-        <div className="mt-2 my-10 md:my-10 p-12 border-solid rounded-lg max-w-3xl mx-auto">
+        <div className="mt-2 my-10 md:my-10 py-12 md:p-12 border-solid rounded-lg max-w-xl mx-auto">
         <div className="text-start mb-8 ">
           <h3 className="text-2xl font-bold">Rules</h3>
           <div>

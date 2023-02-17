@@ -1,5 +1,5 @@
 import { AiFillStar } from 'react-icons/ai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // image
 import spideyImage  from '../../img/spiderman.png'
@@ -8,27 +8,44 @@ import Image from "next/image";
 
 const Front = ({ children, description, username, timestamp, subject = "Confession" }) => {
   const [showMore, setShowMore] = useState(false);
+  const [dateString, setDateString] = useState("");
 
-  let today, messageDate, timeDifference, days, dateString;
+  const updateTimeDifference = () => {
+    if (timestamp) {
+      const today = new Date();
+      const messageDate = new Date(timestamp.seconds * 1000);
+      const timeDifference = today - messageDate;
+      const minutes = Math.floor(timeDifference / (1000 * 60));
+      const seconds = Math.floor(timeDifference / 1000);
 
-  if (timestamp) {
-    today = new Date();
-    messageDate = new Date(timestamp.seconds * 1000);
-    timeDifference = today - messageDate;
-    days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-    if (days >= 3) {
-      if (today.getFullYear() === messageDate.getFullYear()) {
-        dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' });
+      if (minutes >= 1) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        if (days >= 3) {
+          if (today.getFullYear() === messageDate.getFullYear()) {
+            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
+          } else {
+            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
+          }
+        } else {
+          setDateString(`${minutes} minutes ago`);
+        }
       } else {
-        dateString = messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
+        setDateString(`${seconds} seconds ago`);
       }
-    } else if (days === 0) {
-      dateString = messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } else {
-      dateString = `${days} days ago`;
     }
   }
+
+  // call updateTimeDifference once to set the initial value of dateString
+  useEffect(() => {
+    updateTimeDifference();
+  }, [timestamp]);
+
+  // use setInterval to call updateTimeDifference every second to update the seconds part of dateString
+  useEffect(() => {
+    const interval = setInterval(updateTimeDifference, 1000);
+    return () => clearInterval(interval);
+  }, [timestamp]);
+
   
   return (
     <div>      

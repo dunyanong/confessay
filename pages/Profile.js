@@ -22,22 +22,34 @@ export default function Dashboard() {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [posts, setPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const getData = async () => {
+
+  const getData = async (searchQuery) => {
     if (loading) {
       return;
     }
     if (!user) {
-      return route.push("/auth/Login")
-    };
-
+      return route.push("/auth/Login");
+    }
+  
     const collectionRef = collection(db, "posts");
     const q = query(collectionRef, where("user", "==", user.uid));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      let filteredPosts = snapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
+        .filter((post) => {
+          const subject = post.subject && post.subject.toLowerCase();
+          const description = post.description && post.description.toLowerCase();
+          const query = searchQuery && searchQuery.toLowerCase();
+          return (subject && subject.includes(query)) || (description && description.includes(query));
+        });
+      setPosts(filteredPosts);
     });
     return unsubscribe;
-  };    
+  };
+
+     
 
   //Delete Post
   const deletePost = async (id) => {
@@ -47,8 +59,8 @@ export default function Dashboard() {
 
   // Get users data
   useEffect(() => {
-    getData();
-  }, [user, loading]);
+    getData(searchQuery);
+  }, [user, loading, searchQuery]);
 
   return (
     <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
@@ -61,7 +73,15 @@ export default function Dashboard() {
           <img className="w-12 h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
         </div>
       )}
-        <h1 className="tetx-center font-semibold text-3xl text-black hover:cursor-pointer">Your posts</h1>
+        <h1 className="text-center font-semibold text-3xl text-black hover:cursor-pointer py-10">Your posts</h1>
+      </div>
+      <div className="relative w-full max-w-md mx-auto">
+          <input
+            type="text"
+            placeholder="🔍 Search by title or description"
+            className="block w-full pl-5 pr-4 py-2 border rounded-xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
+            onChange={(e) => getData(e.target.value)}
+          />
       </div>
       <div>
         {posts.map((post) => {
