@@ -1,47 +1,80 @@
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../utils/firebase";
-import { Hamburger } from "../components/Hamburger";
-import { useState } from "react";
 import Head from "next/head";
 import RulesDropdown from "../components/RulesDropdown";
 
-const CreatorMessage = () => {
-    const [user, loading] = useAuthState(auth);
+// React icons
+import { FaLightbulb, FaUserSecret, FaAngry } from 'react-icons/fa'
+import { RiEmotionUnhappyFill } from 'react-icons/ri'
+import { GiMedicines } from 'react-icons/gi'
 
+const CreatorMessage = () => {
     return (
         <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
-            <Head>
-                <title>Confessay</title>
-            </Head>
+        <Head>
+            <title>Confessay</title>
+        </Head>
         <div>
-            <h2 className="font-semibold text-3xl text-black hover:cursor-pointer">Rules</h2>
+            <h2 className="font-semibold text-3xl text-black hover:cursor-pointer">Guidelines</h2>
         </div>
-        <div className="">
-            <ul>
-                <div className="my-3 ">
-                    <h3 className="text-2xl text-gray-700">1. It must be a confession.</h3>
-                    <p className="text-gray-500">The confession can be the current state of mind, feelings and hardships of coping.</p>
+        
+        <div className="pt-10 pb-20">
+          <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-10">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-black text-white">
+              <FaLightbulb className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="ml-4">
+            <h3 className='text-lg leading-6 font-medium text-gray-900'>It must be a confession.</h3>
+            <p className="mt-2 text-base text-gray-500">The confession can be the current state of mind, feelings and hardships of coping.</p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-black text-white">
+                <FaUserSecret className="w-5 h-5" />
                 </div>
-                <div className="my-3">
-                    <h3 className="text-2xl text-gray-700">2. No names or contact information to be shared. </h3>
-                    <p className="text-gray-500">If you are comfortable sharing your own name too, go ahead.</p>
-                </div>
-                <div className="my-3">
-                    <h3 className="text-2xl text-gray-700">3. Foul languages and hurtful comments are prohibited. </h3>
-                    <p className="text-gray-500">Be empathetic for the people who need to lend a pair of ear.</p>
-                </div>
-                <div className="my-3">
-                    <h3 className="text-2xl text-gray-700">4. Avoid controversial topics.</h3>
-                    <p className="text-gray-500">That means political posts, racial discrimination (unless you are the victim), religious views are not allowed.</p>
-                </div>
-                <div className="my-3">
-                    <h3 className="text-2xl text-gray-700">5. Do not take medical advice from other users.</h3>
-                    <p className="text-gray-500">Always seek the guidance of your doctor or other qualified health professional with any questions you may have regarding your health or a medical condition.</p>
-                </div>
-
-            </ul>
-        </div>
-
+            </div>
+            <div className="ml-4">
+            <h3 className='text-lg leading-6 font-medium text-gray-900'>No names or contact information to be shared.</h3>
+            <p className="mt-2 text-base text-gray-500">If you are comfortable sharing your own name too, go ahead.</p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-black text-white">
+                <FaAngry className="w-5 h-5" />
+                </div> 
+            </div>
+            <div className="ml-4">
+            <h3 className='text-lg leading-6 font-medium text-gray-900'>Foul languages and hurtful comments are prohibited. </h3>
+            <p className="mt-2 text-base text-gray-500">Be empathetic for the people who need to lend a pair of ear.</p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-black text-white">
+                <RiEmotionUnhappyFill className="w-5 h-5" />
+                </div> 
+            </div>
+            <div className="ml-4">
+            <h3 className='text-lg leading-6 font-medium text-gray-900'>Avoid controversial topics.</h3>
+            <p className="mt-2 text-base text-gray-500">Browse your most listened content on Spotify during last month, 6 months, or since you started using Spotify.</p>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-black text-white">
+                    <GiMedicines className="w-5 h-5" />
+                </div>  
+            </div>
+            <div className="ml-4">
+            <h3 className='text-lg leading-6 font-medium'>Do not take medical advice from other users.</h3>
+            <p className="mt-2 text-base text-gray-500">Always seek the guidance of your doctor or other qualified health professional with any questions you may have regarding your health or a medical condition.</p>
+            </div>
+          </div>          
+          </div>
+          </div>
 
         <div className="mb-4 ml-1">
             <h2 className="font-semibold text-3xl text-black hover:cursor-pointer">Questions</h2>

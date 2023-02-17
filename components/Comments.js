@@ -22,7 +22,7 @@ const Comments = ({ allMessage, user }) => {
               <p className="text-sm text-gray-500 ">{message.time.toDate().toDateString()}</p>
             </div>
           </div>
-          <p className="text-gray-600 break-words">{message.message}</p>
+          <p className="text-gray-600">{message.message}</p>
         </div>
       ))}
     </div>

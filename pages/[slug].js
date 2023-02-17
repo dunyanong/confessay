@@ -1,4 +1,3 @@
-import AllDetails from '../components/confession/AllDetails';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { auth, db } from "../utils/firebase";
@@ -15,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import Head from 'next/head';
 import Comments from '../components/Comments';
+import ClickMore from '../components/confession/ClickMore';
 
 export default function Details() {
   const router = useRouter();
@@ -61,9 +61,22 @@ export default function Details() {
   //Get Comments
   const getComments = async () => {
     const docRef = doc(db, "posts", routeData.id);
-    const unsubscribe = onSnapshot(docRef, (snapshot) => {
-      setAllMessages(snapshot.data().comments);
-    });
+    const unsubscribe = onSnapshot(
+      docRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+          if (data) {
+            setAllMessages(data.comments);
+          }
+        } else {
+          console.log("No such document!");
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     return unsubscribe;
   };
 
@@ -76,7 +89,7 @@ export default function Details() {
     <Head>
       <title>Confessay</title>
     </Head>
-    <AllDetails {...routeData}></AllDetails>
+    <ClickMore {...routeData}></ClickMore>
 
     <div className="mt-7">
     <h2 className="font-bold ml-1 mb-1">Reply confession</h2>
@@ -94,7 +107,7 @@ export default function Details() {
           onClick={submitMessage}
           className="bg-cyan-500 text-white py-2 px-4 text-sm rounded-md"
         >
-          <FaPaperPlane className="text-l"/>
+          <FaPaperPlane/>
         </button>
       </div>
       <h2 className="font-bold mt-10 ml-1">Comments</h2>
