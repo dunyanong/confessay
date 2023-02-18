@@ -89,7 +89,7 @@ const Post = () => {
           <h3 className="text-2xl font-bold">Rules</h3>
           <div>
             <p>
-              Please follow these quick rules <Link href="/CreatorMessage" legacyBehavior><a className="text-cyan-700">here</a></Link>
+              Please follow these quick rules <Link href="/About" legacyBehavior><a className="text-cyan-700">here</a></Link>
             </p>
             <p className="text-red-600">Your accounts will be TERMINATED if you do not follow the rules.</p>
           </div>

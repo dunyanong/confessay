@@ -17,7 +17,6 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-
   const getData = async (searchQuery) => {
     if (loading) {
       return;

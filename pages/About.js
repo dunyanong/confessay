@@ -6,7 +6,7 @@ import { FaLightbulb, FaUserSecret, FaAngry } from 'react-icons/fa'
 import { RiEmotionUnhappyFill } from 'react-icons/ri'
 import { GiMedicines } from 'react-icons/gi'
 
-const CreatorMessage = () => {
+const About = () => {
     return (
         <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
         <Head>
@@ -85,4 +85,4 @@ const CreatorMessage = () => {
     );
 }
  
-export default CreatorMessage;
+export default About;
