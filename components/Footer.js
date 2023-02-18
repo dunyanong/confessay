@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="mt-10 bg-white bg-opacity-50 backdrop-blur-lg">
-            <div className="grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
+        <footer className="mt-20 bg-white bg-opacity-50 backdrop-blur-lg">
+            <div className="grid grid-cols-2 gap-8 px-6 pt-8  md:grid-cols-4">
                 <div>
                     <h2 className="mb-6 text-sm font-semibold text-black uppercase">Pages</h2>
                     <ul className="text-gray-500">
@@ -13,8 +13,8 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li className="mb-4">
-                            <Link href="/CreatorMessage" legacyBehavior>
-                            <a href="#" className="hover:underline">About</a>
+                            <Link href="/About" legacyBehavior>
+                            <a className="hover:underline">About</a>
                             </Link>
                         </li>
                     </ul>

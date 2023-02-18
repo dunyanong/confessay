@@ -31,7 +31,7 @@ const Navbar = () => {
                 </Link>
                 </div>
                 <div className="hover:underline text-sm md:text-base font-semibold">
-                <Link href="/CreatorMessage" legacyBehavior>
+                <Link href="/About" legacyBehavior>
                     <a>About</a>
                 </Link>
                 </div>
