@@ -2,14 +2,7 @@ import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot,query, where,} from "firebase/firestore";
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
@@ -48,9 +41,7 @@ export default function Dashboard() {
     });
     return unsubscribe;
   };
-
-     
-
+  
   //Delete Post
   const deletePost = async (id) => {
     const docRef = doc(db, "posts", id);
