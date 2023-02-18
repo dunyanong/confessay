@@ -19,7 +19,7 @@ const Navbar = () => {
                 <Image src={Logo} width={80} alt="image"/>
               </Link>
               <Link legacyBehavior href="/Frontpage">
-                <a className="font-bold text-2xl text-black">Confessay</a>          
+                <a className="font-bold text-2xl text-black tracking-tighter">Confessay</a>          
               </Link>
             </ul>
         </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
                     <Image src={Logo} width={80} alt="image"/>
                 </Link>
                 <Link legacyBehavior href="/Frontpage">
-                    <p className="font-bold text-2xl text-black">Confessay</p>          
+                    <p className="font-bold text-2xl text-black tracking-tighter">Confessay</p>          
                 </Link>
             </ul>             
             <Hamburger />

@@ -75,11 +75,11 @@ export default function Dashboard() {
       )}
         <h1 className="text-center font-semibold text-3xl text-black hover:cursor-pointer py-10">Your posts</h1>
       </div>
-      <div className="relative w-full max-w-md mx-auto">
+      <div className="relative w-full max-w-md mx-auto md:w-3/4">
           <input
             type="text"
             placeholder="🔍 Search by title or description"
-            className="block w-full pl-5 pr-4 py-2 border rounded-xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
+            className="block w-full pl-5 pr-4 py-2 border rounded-3xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
             onChange={(e) => getData(e.target.value)}
           />
       </div>

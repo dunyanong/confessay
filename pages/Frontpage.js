@@ -50,13 +50,12 @@ const Frontpage = () => {
       </Head>
       <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">        
         <h2 className="text-center font-semibold text-3xl text-black hover:cursor-pointer">Confessions</h2>
-        <div className="md:w-1/2 mx-auto pt-4">
-
+        <div className="md:w-3/4 mx-auto pt-4">
         <div className="relative w-full max-w-md mx-auto">
           <input
             type="text"
             placeholder="🔍 Search by title or description"
-            className="block w-full pl-5 pr-4 py-2 border rounded-xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
+            className="block w-full pl-5 pr-4 py-2 border rounded-3xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40"
             onChange={handleSearch}
           />
         </div>

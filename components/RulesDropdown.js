@@ -60,7 +60,7 @@ const RulesDropdown = () => {
         <div id="accordion-open-body-2" className={style2} aria-labelledby="accordion-open-heading-2">
             <div className="p-5 font-light border border-gray-200">
             <p className="mb-2 text-gray-500">Confessay is created by a Malaysian developer, Dun Yan. </p>
-            <p className="text-gray-500">Click here to know more: <a href="https://github.com/dunyanong" className="text-cyan-700"  target="_blank"> more info</a></p>
+            <p className="text-gray-500">Click here to know more: <a href="https://dunyan.vercel.app" className="text-cyan-700"  target="_blank"> more info</a></p>
             </div>
         </div>
 
