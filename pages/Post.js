@@ -80,7 +80,7 @@ const Post = () => {
     }, [user, loading]);
 
     return  (
-      <div>
+      <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
         <Head>
           <title>Confessay</title>
         </Head>
@@ -120,7 +120,7 @@ const Post = () => {
             />
           </div>
           <button 
-            className="bg-cyan-500 text-white py-2 px-4 rounded-lg my-2 hover:bg-cyan-700" 
+            className="bg-black text-white py-2 px-4 rounded-lg my-2 hover:bg-gray-800" 
             type="submit"
           >
             {post.hasOwnProperty("id") ? "Update Confession" : "Post Confession"}
