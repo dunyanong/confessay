@@ -1,5 +1,5 @@
 import { AiOutlineGoogle, AiFillFacebook } from "react-icons/ai";
-import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, updateProfile } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -14,6 +14,7 @@ const Login = () => {
   const [user, loading] = useAuthState(auth);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
+  const twitterProvider = new TwitterAuthProvider();
 
   const displayErrorMessage = (message) => {
     toast.error(message, {
@@ -34,12 +35,11 @@ const Login = () => {
     } catch (error) {
       if (error.code === "auth/cancelled-popup-request") {
         console.log("Popup request cancelled by user");
-      } else if (error.code === "auth/account-exists-with-different-credential") {
-        displayErrorMessage("You can't use the same email address as your Facebook account. Please use your Facebook account or a different email.");
-      } else {
+      }
+      else {
         console.error(error.message);
       }
-    }
+    }    
   };
   
   const FacebookLogin = async () => {
@@ -58,9 +58,8 @@ const Login = () => {
     } catch (error) {
       if (error.code === "auth/cancelled-popup-request") {
         console.log("Popup request cancelled by user");
-      } else if (error.code === "auth/account-exists-with-different-credential") {
-        displayErrorMessage("You can't use the same email address as your Gmail account. Please use your Gmail account or a different email.");
-      } else {
+      }
+      else {
         console.error(error.message);
       }
     }    

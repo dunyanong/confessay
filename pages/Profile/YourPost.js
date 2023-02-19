@@ -1,4 +1,4 @@
-import { auth, db } from "../utils/firebase";
+import { auth, db } from "../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -8,10 +8,10 @@ import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import ClickMore from "../components/confession/ClickMore";
+import ClickMore from "../../components/confession/ClickMore";
 import Head from "next/head";
 
-export default function Dashboard() {
+const YourPost = () => {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [posts, setPosts] = useState([]);
@@ -124,3 +124,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default YourPost;

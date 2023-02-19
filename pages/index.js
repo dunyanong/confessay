@@ -6,7 +6,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import spideyImage  from '../img/spiderman.png'
 import Image from "next/image";
 
-const index = () => {
+export default function Home() {
     return (
         <div className="md:px-5 w-full max-w-3xl mx-auto pt-20">
             <Head>
@@ -55,5 +55,3 @@ const index = () => {
         </div>
     );
 }
- 
-export default index;
