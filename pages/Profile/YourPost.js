@@ -57,13 +57,15 @@ const YourPost = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center gap-1">
       {user && (
         <div>
-          <img className="w-12 h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
+          <img className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
         </div>
       )}
-        <h1 className="text-center font-semibold text-3xl text-black hover:cursor-pointer py-10">Your posts</h1>
+      {user && (
+        <h1 className="text-center font-semibold text-xl md:text-3xl text-black hover:cursor-pointer py-10">{user.displayName}</h1>
+      )}
       </div>
       <div className="relative w-full max-w-md mx-auto md:w-3/4">
           <input

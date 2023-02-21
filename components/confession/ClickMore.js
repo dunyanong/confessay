@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// image
-import spideyImage  from '../../img/spiderman.png'
-import Image from "next/image";
-
-const ClickMore = ({ children, description, username, timestamp, subject = "Confession" }) => {
+const ClickMore = ({ photoURL = "https://media.4-paws.org/e/8/2/7/e82789b9dc8a986d3b61c0aa7610affeecb93933/VIER%20PFOTEN_2015-04-27_010-1927x1333.jpg", children, description, username, timestamp, subject = "Confession" }) => {
   const [showMore, setShowMore] = useState(false);
   const [dateString, setDateString] = useState("");
 
@@ -53,9 +49,9 @@ const ClickMore = ({ children, description, username, timestamp, subject = "Conf
 
     <div className="py-4 px-8 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
     <div className="flex items-center pb-3">
-        <Image src={spideyImage} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
+        <img src={photoURL} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
         <div>
-            <h1 className="font-semibold text-xl text-gray-900">SpideyLover</h1>    
+            <h1 className="font-semibold text-xl text-gray-900">{username}</h1>    
             <p className='text-xs text-gray-500'>{dateString}</p>
         </div>            
     </div>

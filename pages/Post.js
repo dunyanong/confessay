@@ -45,7 +45,7 @@ const Post = () => {
         const docRef = doc(db, "posts", post.id);
         const updatedPost = { ...post, timestamp: serverTimestamp() };
         await updateDoc(docRef, updatedPost);
-        return route.push("/");
+        return route.push("/Frontpage");
         } else {
         //Make a new post
         const collectionRef = collection(db, "posts");
@@ -61,7 +61,7 @@ const Post = () => {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 1500,
         });
-        return route.push("/");
+        return route.push("/Frontpage");
 
         }
     };
