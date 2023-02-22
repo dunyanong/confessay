@@ -49,7 +49,7 @@ export default function Home() {
       <Link href="/Profile/setting">
             <AiFillSetting className="w-10 h-10 mb-2 text-black"/>
             <span>
-                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-black">Profile Setting</h5>
+                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-black">Setting</h5>
             </span>
             <p className="mb-3 font-normal text-black">Personalize your profile with a unique nickname and profile picture. Choose an avatar that represents you and make it easier for others to recognize you online.</p>
             <span href="#" className="inline-flex items-center text-blue-600 hover:underline">

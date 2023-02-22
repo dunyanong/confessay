@@ -10,10 +10,11 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer,toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { auth } from "../utils/firebase";
 import Link from "next/link";
 import Head from "next/head";
+import Cookies from "js-cookie";
 
 const Post = () => {
     //Form state
@@ -126,7 +127,6 @@ const Post = () => {
             {post.hasOwnProperty("id") ? "Update Confession" : "Post Confession"}
           </button>
         </form>
-
       </div>
   </div>
 );

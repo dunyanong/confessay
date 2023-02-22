@@ -57,74 +57,83 @@ const YourPost = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="flex justify-center items-center gap-1">
-      {user && (
+      {posts.length > 0 && (
         <div>
-          <img className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL} />
-        </div>
-      )}
-      {user && (
-        <h1 className="text-center font-semibold text-xl md:text-3xl text-black hover:cursor-pointer py-10">{user.displayName}</h1>
-      )}
+          <div className="flex justify-center items-center gap-1">
+            {user && (
+              <div>
+                <img
+                  className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2"
+                  src={user.photoURL}
+                />
+              </div>
+            )}
+            {user && (
+              <h1 className="text-center font-semibold text-xl md:text-3xl text-black hover:cursor-pointer py-10">
+                {user.displayName}
+              </h1>
+            )}
+          </div>
+          <div className="relative w-full max-w-md mx-auto md:w-3/4">
+            <input
+              type="text"
+              placeholder="🔍 Search by title or description"
+              className="block w-full pl-5 pr-4 py-2 border rounded-3xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
+              onChange={(e) => getData(e.target.value)}
+            />
+          </div>
       </div>
-      <div className="relative w-full max-w-md mx-auto md:w-3/4">
-          <input
-            type="text"
-            placeholder="🔍 Search by title or description"
-            className="block w-full pl-5 pr-4 py-2 border rounded-3xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40 focus:ring-2 focus:ring-blue-600"
-            onChange={(e) => getData(e.target.value)}
-          />
-      </div>
-      <div>
-        {posts.map((post) => {
-          return (
-            <ClickMore key={post.id} {...post} >
-              <Link href={{ pathname: `/${post.id}`, query: { ...post } }} >
-              <button className="font-sm mb-2 text-teal-600">
-                {post.comments && post.comments.length > 0 ? post.comments.length : 0} comments
-              </button>
-              </Link>
-              <div className="flex gap-4">
-                <button
-                  onClick={
-                    () => {              
+      )}
+      {posts.length === 0 ? (
+          <div className="flex flex-col items-center justify-center mt-20">
+            <h2 className="text-gray-500 font-bold text-2xl mb-4">
+              You haven't made any posts yet!
+            </h2>
+            <p className="text-gray-500">
+              Click on the <Link href="/Post" className="text-blue-600">here</Link> to make your first post
+            </p>
+          </div>
+        ) : (
+        <div>
+          {posts.map((post) => {
+            return (
+              <ClickMore key={post.id} {...post}>
+                <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+                  <button className="font-sm mb-2 text-teal-600">
+                    {post.comments && post.comments.length > 0
+                      ? post.comments.length
+                      : 0}{" "}
+                    comments
+                  </button>
+                </Link>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => {
                       toast.error("Post has been deleted 🗑️ ", {
                         position: toast.POSITION.TOP_CENTER,
                         autoClose: 1500,
-                    });
-                    return deletePost(post.id);
-                    }
-                  }
-                  className="text-pink-600 flex items-center justify-center gap-2 py-2 text-sm"
-                >
-                  <BsTrash2Fill className="text-2xl" /> Delete
-                </button>
-                <Link href={{ pathname: "/Post", query: post }}>
-                  <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
-                    <AiFillEdit className="text-2xl" />
-                    Edit
+                      });
+                      return deletePost(post.id);
+                    }}
+                    className="text-pink-600 flex items-center justify-center gap-2 py-2 text-sm"
+                  >
+                    <BsTrash2Fill className="text-2xl" /> Delete
                   </button>
-                </Link>
-              </div>
-            </ClickMore>
-          );
-        })}
-      </div>
-      <button
-        className="text-white bg-red-500 py-2 px-4 mt-10 rounded-lg"
-        onClick={() => {
-          auth.signOut();
-          toast.success("Signed out 🤘", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 1500,
-          })
-          return route.push("/");
-        }}
-      >
-        Sign out
-      </button>
+                  <Link href={{ pathname: "/Post", query: post }}>
+                    <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
+                      <AiFillEdit className="text-2xl" />
+                      Edit
+                    </button>
+                  </Link>
+                </div>
+              </ClickMore>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
+  
 }
 
 export default YourPost;
