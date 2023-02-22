@@ -49,8 +49,8 @@ const Notification = () => {
             <title>Confessay</title>
         </Head>
 
-        <div className="flex justify-center items-center">
-            <p>Coming soon......</p>
+        <div className="flex justify-center items-center mt-10 md:mt-20">
+            <h1 className="text-5xl font-extrabold">Coming soon...</h1>
         </div>
 
     </div>

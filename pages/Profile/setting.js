@@ -67,28 +67,37 @@ const Setting = () => {
 
   const handleSaveChanges = async () => {
     // Update the user's display name and photo URL in Firebase
-    updateProfile(auth.currentUser, {
-      displayName: nickname,
-      photoURL: secretPhoto,
-    }).then(() => {
-      setTimeout(() => {
-        // Display a success message and redirect the user
-        toast.success("Changes saved 🎉", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
-        });
-        router.push("/profile");
-      }, 1000);
-    }).catch((error) => {
-      setTimeout(() => {
-        toast.error(error.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
-        });
-      }, 1000);
-    });
-    
-  };  
+    const profileUpdates = {};
+    if (nickname.trim() !== "") {
+      profileUpdates.displayName = nickname;
+    }
+    if (secretPhoto.trim() !== "") {
+      profileUpdates.photoURL = secretPhoto;
+    } else if (user.photoURL) {
+      profileUpdates.photoURL = user.photoURL;
+    }
+    updateProfile(auth.currentUser, profileUpdates)
+      .then(() => {
+        setTimeout(() => {
+          // Display a success message and redirect the user
+          toast.success("Changes saved 🎉", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 1500,
+          });
+          router.push("/profile");
+        }, 1000);
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          toast.error(error.message, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 1500,
+          });
+        }, 1000);
+      });
+  };
+   
+
   // Get users data
   useEffect(() => {
     getData(searchQuery);
@@ -100,22 +109,29 @@ const Setting = () => {
         <title>Confessay</title>
       </Head>
       <div className="">
-      <h1 className="text-start font-semibold text-4xl mb-10 text-black hover:cursor-pointer">Your Setting</h1>
-      {user && <img className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL}/>}
-      {user && <h2 className="text-center font-semibold text-xl md:text-3xl text-black hover:cursor-pointer py-10">
-        {user.displayName}
-      </h2>}
+      <h1 className="text-start font-semibold text-5xl mb-10 md:mb-20 text-black hover:cursor-pointer">Setting</h1>
       <form>
+
+        <div className="flex justify-start mb-6 items-center gap-3">
+          {user && <img className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2" src={user.photoURL}/>}          
+          <label htmlFor="photo-input" className="btn bg-white text-black font-semibold text-xs px-4 py-1 md:px-5 md:py-2 md:text-sm rounded-md cursor-pointer">
+            Upload Photo
+          </label>
+          <input
+            id="photo-input"
+            type="file"
+            accept="image/*"
+            onChange={handleSecretPhotoChange}
+            style={{ display: "none" }}
+          />    
+        </div>  
+
         <div className="mb-6">
-          <label htmlFor="nickname" className="block mb-2 text-sm font-medium text-gray-900">Nickname</label>
-          <input type="text" id="nickname" name="nickname" value={nickname} onChange={handleNicknameChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit nickname" />
+          <label htmlFor="nickname" className="block mb-2 text-sm text-gray-900 font-semibold">Nickname</label>
+          <input type="text" id="nickname" name="nickname" value={nickname} onChange={handleNicknameChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={`${user ? user.displayName : ""}`} />
         </div>
-        <div className="mb-6">
-          <label htmlFor="secretPhoto" className="block mb-2 text-sm font-medium text-gray-900">Photo avatar</label>
-          <input type="text" id="secretPhoto" name="secretPhoto" value={secretPhoto} onChange={handleSecretPhotoChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit photo avatar" />
-          <input type="file" accept="image/*" onChange={handleSecretPhotoChange} className="border text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Edit photo avatar" />
-        </div>
-        <button onClick={handleSaveChanges} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+
+        <button onClick={handleSaveChanges} className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update Profile</button>
       </form>
       </div>
 

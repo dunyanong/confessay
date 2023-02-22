@@ -86,37 +86,29 @@ const Post = () => {
           <title>Confessay</title>
         </Head>
         <div className="mt-2 my-10 md:my-10 py-12 md:p-12 border-solid rounded-lg max-w-xl mx-auto">
-        <div className="text-start mb-8 ">
-          <h3 className="text-2xl font-bold">Rules</h3>
-          <div>
+        <div className="text-center mb-8 ">
+          <h1 className="text-2xl md:text-5xl font-bold mb-8">{post.hasOwnProperty("id") ? "Edit your confession" : "Confess Now!"}</h1>
             <p>
-              Please follow these quick rules <Link href="/About" legacyBehavior><a className="text-cyan-700">here</a></Link>
+            Let's work together to create a safe and welcoming environment. By following these simple <Link href="/About" legacyBehavior><a className="text-blue-600">guidelines</a></Link>, we can ensure that everyone feels comfortable and respected.
             </p>
-            <p className="text-red-600">Your accounts will be TERMINATED if you do not follow the rules.</p>
-          </div>
         </div>
         
         <form onSubmit={submitPost}>
-          <h1 className="text-2xl font-bold">
-            {post.hasOwnProperty("id") ? "Edit your confession" : "Create a new confession"}
-          </h1>
           <div className="py-2">
-            <h3 className="text-lg font-bold">Subject</h3>
             <input 
               type="text" 
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={post.subject} 
               onChange={(e) => setPost({...post, subject: e.target.value})} 
-              placeholder="Confession Subject" 
+              placeholder="Confession Subject 🙂" 
             />
           </div>
           <div className="py-2">
-            <h3 className="text-lg font-bold">Description</h3>
             <textarea 
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={post.description} 
               onChange={(e) => setPost({...post, description: e.target.value})} 
-              placeholder="Write your confession here..." 
+              placeholder="Write your confession here 💬" 
               rows="8"
             />
           </div>

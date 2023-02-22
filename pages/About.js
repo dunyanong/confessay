@@ -59,7 +59,7 @@ const About = () => {
             </div>
             <div className="ml-4">
             <h3 className='text-lg leading-6 font-medium text-gray-900'>Avoid controversial topics.</h3>
-            <p className="mt-2 text-base text-gray-500">Browse your most listened content on Spotify during last month, 6 months, or since you started using Spotify.</p>
+            <p className="mt-2 text-base text-gray-500">Please keep in mind this is not an opinions page. Political posts, religious views, racial discrimination, abuse, hate speech or threatening post will not be tolerated and the user may be blocked.</p>
             </div>
           </div>
           <div className="flex">

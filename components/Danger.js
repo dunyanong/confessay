@@ -25,7 +25,7 @@ const Danger = () => {
   };
 
   return (
-    <div className="text-end">
+    <div className="text-end mt-20">
       <button
         className="text-white bg-yellow-500 py-2 px-4 mt-10 rounded-lg mr-2"
         onClick={() => {
