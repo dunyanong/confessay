@@ -49,7 +49,6 @@ const Frontpage = () => {
         <title>Confessay</title>
       </Head>
       <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">        
-        <h2 className="text-center font-semibold text-3xl text-black hover:cursor-pointer">Confessions</h2>
         <div className="md:w-3/4 mx-auto pt-4">
         <div className="relative w-full max-w-md mx-auto">
           <input

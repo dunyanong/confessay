@@ -51,6 +51,22 @@ a {
   visibility:visible;
 }
 
+.hiddenFunction5{
+  display: none;
+}
+
+.visibleFunction5{
+  visibility:visible;
+}
+
+.hiddenFunction6{
+  display: none;
+}
+
+.visibleFunction6{
+  visibility:visible;
+}
+
 .no-truncate{
   overflow: none;
   text-overflow: none;

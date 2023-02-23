@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { AiFillBell, AiFillMessage } from 'react-icons/ai'
-import { CgProfile } from 'react-icons/cg'
+import { AiFillBell, AiFillMessage, AiFillSetting } from 'react-icons/ai'
 
 export default function Home() {
   return (
@@ -48,9 +47,9 @@ export default function Home() {
       <div className="flex justify-center mt-10">
       <div className="max-w-sm p-6 border-gray-200 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg hover:shadow-xl duration-1000">
       <Link href="/Profile/setting">
-            <CgProfile className="w-10 h-10 mb-2 text-black"/>
+            <AiFillSetting className="w-10 h-10 mb-2 text-black"/>
             <span>
-                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-black">Profile Setting</h5>
+                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-black">Setting</h5>
             </span>
             <p className="mb-3 font-normal text-black">Personalize your profile with a unique nickname and profile picture. Choose an avatar that represents you and make it easier for others to recognize you online.</p>
             <span href="#" className="inline-flex items-center text-blue-600 hover:underline">
