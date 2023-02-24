@@ -15,7 +15,7 @@ Confessay is a web application built using Next.js, Tailwind, React, and Firebas
 - JavaScript
 - Firebase
 
-Created by Dun Yan in 2022. Check out my [portfolio](https://dunyan.vercel.app/)!
+Created by [Ong Dun Yan](https://dunyan.vercel.app/) in 2022.
 
 Website link: [confessay.vercel.app](https://confessay.vercel.app/)
 
