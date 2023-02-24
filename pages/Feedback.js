@@ -16,49 +16,50 @@ import Link from "next/link";
 import Head from "next/head";
 import Cookies from "js-cookie";
 
-const Post = () => {
+const Feedback = () => {
     //Form state
-    const [post, setPost] = useState({ description: "" });
+    const [feedback, setFeedback] = useState({ description: "" });
     const [user, loading] = useAuthState(auth);
     const route = useRouter();
     const routeData = route.query;
 
-    //Submit Post
-    const submitPost = async (e) => {
+    //Submit Feedback
+    const submitFeedback = async (e) => {
         e.preventDefault();
         //Run checks for description
-        if (!post.description) {
-            toast.error("no confessions written 😭", {
+        if (!feedback.description) {
+            toast.error("no feedback written 😭", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 1500,
             });
         return;
         }
-        if (post.description.length > 1000) {
-            toast.error("description is too long 🤡", {
+        if (feedback.description.length > 1000) {
+            toast.error("Feedback is too long 🤡", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 1500,
             });
         return;
         }
 
-        if (post?.hasOwnProperty("id")) {
-        const docRef = doc(db, "posts", post.id);
-        const updatedPost = { ...post, timestamp: serverTimestamp() };
-        await updateDoc(docRef, updatedPost);
+        if (feedback?.hasOwnProperty("id")) {
+        const docRef = doc(db, "feedbacks", feedback.id);
+        const updatedFeedback = { ...feedback, timestamp: serverTimestamp() };
+        await updateDoc(docRef, updatedFeedback);
         return route.push("/Frontpage");
         } else {
         //Make a new post
-        const collectionRef = collection(db, "posts");
+        const collectionRef = collection(db, "feedbacks");
         await addDoc(collectionRef, {
-            ...post,
+            ...feedback,
             timestamp: serverTimestamp(),
             user: user.uid,
             avatar: user.photoURL,
             username: user.displayName,
+            email: user.email
         });
-        setPost({ description: "" });
-        toast.success("Post has been made 🚀", {
+        setFeedback({ description: "" });
+        toast.success("feedback has been made 🚀", {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 1500,
         });
@@ -71,7 +72,7 @@ const Post = () => {
         if (loading) return;
         if (!user) route.push("/auth/Login");
         if (routeData.id) {
-        setPost({ description: routeData.description, id: routeData.id });
+            setFeedback({ description: routeData.description, id: routeData.id });
         }
     };
 
@@ -86,27 +87,27 @@ const Post = () => {
         </Head>
         <div className="mt-2 my-10 md:my-10 py-12 md:p-12 border-solid rounded-lg max-w-xl mx-auto">
         <div className="text-center mb-8 ">
-          <h1 className="text-2xl md:text-5xl font-bold mb-8">{post.hasOwnProperty("id") ? "Edit your confession" : "Confess Now!"}</h1>
+          <h1 className="text-2xl md:text-5xl font-bold mb-8">Write a feedback ✍️</h1>
             <p>
-            Let's work together to create a safe and welcoming environment. By following these simple <Link href="/About" legacyBehavior><a className="text-blue-600">guidelines</a></Link>, we can ensure that everyone feels comfortable and respected.
+            Your thoughts and suggestions will be incredibly valuable as we work to improve our platform and better serve our users. We appreciate your support! 🤗 🙏
             </p>
         </div>
         
-        <form onSubmit={submitPost}>
+        <form onSubmit={submitFeedback}>
           <div className="py-2">
             <input 
               type="text" 
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
-              value={post.subject} 
-              onChange={(e) => setPost({...post, subject: e.target.value})} 
+              value={feedback.subject} 
+              onChange={(e) => setFeedback({...feedback, subject: e.target.value})} 
               placeholder="Confession Subject 🙂" 
             />
           </div>
           <div className="py-2">
             <textarea 
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
-              value={post.description} 
-              onChange={(e) => setPost({...post, description: e.target.value})} 
+              value={feedback.description} 
+              onChange={(e) => setFeedback({...feedback, description: e.target.value})} 
               placeholder="Write your confession here 💬" 
               rows="8"
             />
@@ -115,7 +116,7 @@ const Post = () => {
             className="bg-black text-white py-2 px-4 rounded-lg my-2 hover:bg-gray-800" 
             type="submit"
           >
-            {post.hasOwnProperty("id") ? "Update Confession" : "Post Confession"}
+            Send Feedback
           </button>
         </form>
       </div>
@@ -123,4 +124,4 @@ const Post = () => {
 );
 }
  
-export default Post;
+export default Feedback;

@@ -23,18 +23,21 @@ const Footer = () => {
                     <h2 className="mb-6 text-sm font-semibold text-black uppercase">Help center</h2>
                     <ul className="text-gray-500">
                         <li className="mb-4">
-                            <a href="https://twitter.com/dun_yan_" className="hover:underline" target="_blank">Twitter</a>
+                            <a href="https://twitter.com/dun_yan_" className="hover:underline" target="_blank">Twitter (For Urgent)</a>
                         </li>
                         <li className="mb-4">
                             <a href="mailto:confessayishere@gmail.com" className="hover:underline" target="_blank">Email</a>
                         </li>
+                        <li className="mb-4">
+                            <Link href="/Feedback" className="hover:underline" target="_blank">Feedback</Link>
+                        </li>                        
                     </ul>
                 </div>
                 <div>
                     <h2 className="mb-6 text-sm font-semibold text-black uppercase">Others</h2>
                     <ul className="text-gray-500">
                         <li className="mb-4">
-                            <a href="https://github.com/dunyanong/Confessay" className="hover:underline" target="_blank">Licensing</a>
+                            <a href="https://github.com/dunyanong/confessay/blob/main/LICENSE" className="hover:underline" target="_blank">Licensing</a>
                         </li>
                         <li className="mb-4">
                             <a href="/Frontpage" className="hover:underline" target="_blank">Support us (Coming soon)</a>
