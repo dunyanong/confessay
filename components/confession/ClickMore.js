@@ -1,8 +1,46 @@
 import { useEffect, useState } from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, deleteDoc, doc, onSnapshot,query, where,} from "firebase/firestore";
+//
+import { getAuth, updateProfile } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { auth, db } from "../../utils/firebase";
 
-const ClickMore = ({ photoURL = "https://media.4-paws.org/e/8/2/7/e82789b9dc8a986d3b61c0aa7610affeecb93933/VIER%20PFOTEN_2015-04-27_010-1927x1333.jpg", children, description, username, timestamp, subject = "Confession" }) => {
+const ClickMore = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a94739e4a03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1892&q=80", children, description, username, timestamp, subject = "Confession" }) => {
   const [showMore, setShowMore] = useState(false);
   const [dateString, setDateString] = useState("");
+  const [user, loading] = useAuthState(auth);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [posts, setPosts] = useState([]);
+
+  const getData = async (searchQuery) => {
+    if (loading) {
+      return;
+    }
+    if (!user) {
+      return route.push("/auth/Login");
+    }
+  
+    const collectionRef = collection(db, "posts");
+    const q = query(collectionRef, where("user", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      let filteredPosts = snapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
+        .filter((post) => {
+          const subject = post.subject && post.subject.toLowerCase();
+          const description = post.description && post.description.toLowerCase();
+          const query = searchQuery && searchQuery.toLowerCase();
+          return (subject && subject.includes(query)) || (description && description.includes(query));
+        });
+      setPosts(filteredPosts);
+    });
+    return unsubscribe;
+  };   
+
+    // Get users data
+    useEffect(() => {
+      getData(searchQuery);
+    }, [user, loading, searchQuery]);   
 
   const updateTimeDifference = () => {
     if (timestamp) {
