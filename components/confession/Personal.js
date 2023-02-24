@@ -1,7 +1,46 @@
 import { useEffect, useState } from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, deleteDoc, doc, onSnapshot,query, where,} from "firebase/firestore";
+//
+import { getAuth, updateProfile } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { auth, db } from "../../utils/firebase";
 
-const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a94739e4a03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1892&q=80", children, description, username, timestamp, subject = "Confession" }) => {
+const Personal = ({ children, description, username, timestamp, subject = "Confession" }) => {
+  const [showMore, setShowMore] = useState(false);
   const [dateString, setDateString] = useState("");
+  const [user, loading] = useAuthState(auth);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [posts, setPosts] = useState([]);
+
+  const getData = async (searchQuery) => {
+    if (loading) {
+      return;
+    }
+    if (!user) {
+      return route.push("/auth/Login");
+    }
+  
+    const collectionRef = collection(db, "posts");
+    const q = query(collectionRef, where("user", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      let filteredPosts = snapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
+        .filter((post) => {
+          const subject = post.subject && post.subject.toLowerCase();
+          const description = post.description && post.description.toLowerCase();
+          const query = searchQuery && searchQuery.toLowerCase();
+          return (subject && subject.includes(query)) || (description && description.includes(query));
+        });
+      setPosts(filteredPosts);
+    });
+    return unsubscribe;
+  };   
+
+    // Get users data
+    useEffect(() => {
+      getData(searchQuery);
+    }, [user, loading, searchQuery]);   
 
   const updateTimeDifference = () => {
     if (timestamp) {
@@ -39,13 +78,16 @@ const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a9
     return () => clearInterval(interval);
   }, [timestamp]);
 
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  }
   
   return (
-    <div>      
+    <div>
 
     <div className="py-4 px-8 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
     <div className="flex items-center pb-3">
-        <img src={photoURL} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
+        <img src={user.photoURL} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
         <div>
             <h1 className="font-semibold text-xl text-gray-900">{username}</h1>    
             <p className='text-xs text-gray-500'>{dateString}</p>
@@ -60,16 +102,18 @@ const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a9
     </div>
 
     <div className="py-4">
-        <p className="text-gray-700 text-sm whitespace-pre-line break-words">
-        {description?.length > 515 ? `${description.slice(0, 512)}...` : description}
+        <p className={`text-gray-700 text-sm whitespace-pre-line break-words ${showMore ? '' : 'line-clamp-3'}`}>
+          {description}
         </p>
+        <span className="text-blue-800 cursor-pointer" onClick={toggleShowMore}>{showMore ? 'Read less' : 'Read more'}</span>
+      </div>
+      <div className="text-gray-700">
+        <div className="text-sm">{children}</div>
+      </div>
     </div>
-    <div className="text-teal-600">
-        <p className="text-sm">{children}</p>
-    </div>
-    </div> 
+    
     </div>
   );
 }
 
-export default Front;
+export default Personal;

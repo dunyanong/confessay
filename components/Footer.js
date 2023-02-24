@@ -34,7 +34,7 @@ const Footer = () => {
                     <h2 className="mb-6 text-sm font-semibold text-black uppercase">Others</h2>
                     <ul className="text-gray-500">
                         <li className="mb-4">
-                            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" className="hover:underline" target="_blank">Licensing</a>
+                            <a href="https://github.com/dunyanong/Confessay" className="hover:underline" target="_blank">Licensing</a>
                         </li>
                         <li className="mb-4">
                             <a href="/Frontpage" className="hover:underline" target="_blank">Support us (Coming soon)</a>

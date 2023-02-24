@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import ClickMore from "../../components/confession/ClickMore";
 import Head from "next/head";
+import Personal from "../../components/confession/Personal";
 
 const YourPost = () => {
   const route = useRouter();
@@ -97,7 +98,7 @@ const YourPost = () => {
         <div>
           {posts.map((post) => {
             return (
-              <ClickMore key={post.id} {...post}>
+              <Personal key={post.id} {...post}>
                 <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
                   <button className="font-sm mb-2 text-teal-600">
                     {post.comments && post.comments.length > 0
@@ -126,7 +127,7 @@ const YourPost = () => {
                     </button>
                   </Link>
                 </div>
-              </ClickMore>
+              </Personal>
             );
           })}
         </div>

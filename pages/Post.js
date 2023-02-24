@@ -10,7 +10,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { auth } from "../utils/firebase";
 import Link from "next/link";
 import Head from "next/head";
@@ -63,7 +64,6 @@ const Post = () => {
             autoClose: 1500,
         });
         return route.push("/Frontpage");
-
         }
     };
 
