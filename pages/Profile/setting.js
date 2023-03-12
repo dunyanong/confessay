@@ -4,12 +4,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import Head from "next/head";
 import { collection, deleteDoc, doc, onSnapshot,query, where,} from "firebase/firestore";
-import Danger from "../../components/Danger";
+import DeleteAccount from "../../components/DeleteAccount";
 import { useRouter } from "next/router";
 
 //
 import { getAuth, updateProfile } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
 import { auth, db } from "../../utils/firebase";
 
 const Setting = () => {
@@ -79,44 +78,54 @@ const Setting = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="">
-      <h1 className="text-start font-semibold text-5xl mb-10 md:mb-20 text-black hover:cursor-pointer">Setting</h1>
+      <div>
+      <h1 className="text-start font-semibold text-5xl mb-10 md:mb-20 text-black">Setting</h1>
       {posts.length > 0 && (
-        <div className="flex justify-start">
-          <div className="flex justify-center items-center gap-1">
+        <div className="flex items-center gap-1 md:gap-2">
+        <div className="flex justify-start my-1">
             {user && (
               <div>
                 <img
-                  className="w-6 h-6 md:w-12 md:h-12 rounded-full object-cover cursor-pointer mr-2"
+                  className="w-10 h-10 md:w-16 md:h-16 rounded-full object-cover cursor-pointer mr-2"
                   src={user.photoURL}
                 />
               </div>
             )}
-            {user && (
-              <h1 className="text-center font-semibold text-lg md:text-2xl text-black hover:cursor-pointer py-10">
+        </div>
+        <div>
+          {user && (
+            <div>
+              <h1 className="text-start font-medium text-lg md:text-2xl text-black">
                 {user.displayName}
               </h1>
-            )}
-          </div>
-      </div>
+              <p className="text-start font-normal text-sm md:text-md text-gray-600">{user.email}</p> 
+            </div>
+          )}              
+        </div>    
+        </div>        
       )}      
-      <form>
-        <div className="mb-6">
-          <label htmlFor="photoURL" className="block mb-2 text-sm text-gray-900 font-semibold">Profile Picture URL</label>
-          <input type="text" id="photoURL" name="photoURL" value={photoURL} onChange={e => setPhotoURL(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter a URL for your profile picture" />
+      
+      <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
+        {user && (
+        <div className="mt-10 mb-5 py-4 px-4">
+          <h3 className="text-lg font-semibold">Basic informations</h3>
+          {user.providerData.length > 0 ? (
+            <p className="text-sm font-normal my-1">Linked providers: {user.providerData.map((provider) => provider.providerId).join(', ')}</p>
+          ) : (
+            <p className="text-sm font-normal my-1">No linked providers</p>
+          )}
+          {user.metadata && (
+            <>
+              <p className="text-sm font-normal my-1">Last signed in: {new Date(user.metadata.lastSignInTime).toLocaleDateString()}</p>
+              <p className="text-sm font-normal my-1">Account created: {new Date(user.metadata.creationTime).toLocaleDateString()}</p>
+            </>
+          )}
         </div>
-
-        <div className="mb-6">
-          <label htmlFor="nickname" className="block mb-2 text-sm text-gray-900 font-semibold">Nickname</label>
-          <input type="text" id="nickname" name="nickname" value={nickname} onChange={e => setNickname(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={`${user ? user.displayName : ""}`} />
-        </div>
-
-        <button onClick={handleSaveChanges} className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update Profile</button>
-      </form>
+        )}
       </div>
 
-      <Danger />
-
+      <DeleteAccount />
+      </div>
     </div>
   );
 };

@@ -100,7 +100,7 @@ const Feedback = () => {
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={feedback.subject} 
               onChange={(e) => setFeedback({...feedback, subject: e.target.value})} 
-              placeholder="Confession Subject 🙂" 
+              placeholder="Main Subject 🙂" 
             />
           </div>
           <div className="py-2">
@@ -108,7 +108,7 @@ const Feedback = () => {
               className="w-full border border-gray-300 p-2 rounded-lg my-2" 
               value={feedback.description} 
               onChange={(e) => setFeedback({...feedback, description: e.target.value})} 
-              placeholder="Write your confession here 💬" 
+              placeholder="Write your feedback here 💬" 
               rows="8"
             />
           </div>

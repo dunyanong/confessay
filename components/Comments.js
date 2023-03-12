@@ -3,28 +3,34 @@ import { FaUserSecret } from "react-icons/fa";
 
 const Comments = ({ allMessage, user }) => {
   return (
-    <div className="w-26">
-      {allMessage?.map((message) => (
-        <div className="py-6 mb-2 text-base rounded-lg" key={message.id}>
-          <div className="flex justify-between items-center mb-2">
-            <div className="flex items-center">
+    <div className="w-full max-w-2xl mx-auto mt-8">
+      {allMessage?.length > 0 ? (
+        allMessage.map((message) => (
+          <div className="bg-white bg-opacity-10 p-4 rounded-lg shadow-lg mb-4" key={message.id}>
+            <div className="flex items-center mb-2">
               {user && (
-                <div>
-                  <img src={message.avatar} className="mr-2 w-6 h-6 rounded-full" />
+                <div className="w-8 h-8 mr-2">
+                  <img src={message.avatar} className="rounded-full w-full h-full" />
                 </div>
               )}
               {!user && (
-                <div className="text-gray-900 mr-1">
+                <div className="text-gray-900 mr-2">
                   <FaUserSecret size={20} />
                 </div>
               )}
-              <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold">{message.userName}</p>
-              <p className="text-sm text-gray-500 ">{message.time.toDate().toDateString()}</p>
+              <div>
+                <p className="text-gray-900 font-medium">{message.userName}</p>
+                <p className="text-gray-500 text-sm">{message.time.toDate().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
+              </div>
             </div>
+            <p className="text-gray-700">{message.message}</p>
           </div>
-          <p className="text-gray-600">{message.message}</p>
+        ))
+      ) : (
+        <div className="flex justify-center">
+          <p className="text-gray-700 text-sm">There are currently no comments</p>
         </div>
-      ))}
+      )}
     </div>
   );
 }

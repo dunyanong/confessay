@@ -40,7 +40,7 @@ const Footer = () => {
                             <a href="https://github.com/dunyanong/confessay/blob/main/LICENSE" className="hover:underline" target="_blank">Licensing</a>
                         </li>
                         <li className="mb-4">
-                            <a href="/Frontpage" className="hover:underline" target="_blank">Support us (Coming soon)</a>
+                            <a href="https://www.buymeacoffee.com/dunyanong" className="hover:underline" target="_blank">Support us</a>
                         </li>
                     </ul>
                 </div>
