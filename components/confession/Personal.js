@@ -42,30 +42,33 @@ const Personal = ({ children, description, username, timestamp, subject = "Confe
       getData(searchQuery);
     }, [user, loading, searchQuery]);   
 
-  const updateTimeDifference = () => {
-    if (timestamp) {
-      const today = new Date();
-      const messageDate = new Date(timestamp.seconds * 1000);
-      const timeDifference = today - messageDate;
-      const minutes = Math.floor(timeDifference / (1000 * 60));
-      const seconds = Math.floor(timeDifference / 1000);
-
-      if (minutes >= 1) {
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        if (days >= 3) {
-          if (today.getFullYear() === messageDate.getFullYear()) {
-            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
+    const updateTimeDifference = () => {
+      if (timestamp) {
+        const today = new Date();
+        const messageDate = new Date(timestamp.seconds * 1000);
+        const timeDifference = today - messageDate;
+        const minutes = Math.floor(timeDifference / (1000 * 60));
+        const seconds = Math.floor(timeDifference / 1000);
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        
+        if (hours >= 1) {
+          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+          if (days >= 3) {
+            if (today.getFullYear() === messageDate.getFullYear()) {
+              setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
+            } else {
+              setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
+            }
           } else {
-            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
+            setDateString(`${hours} hr${hours > 1 ? 's' : ''} ago`);
           }
+        } else if (minutes >= 1) {
+          setDateString(`${minutes} min${minutes > 1 ? 's' : ''} ago`);
         } else {
-          setDateString(`${minutes} minutes ago`);
+          setDateString(`${seconds} sec${seconds > 1 ? 's' : ''} ago`);
         }
-      } else {
-        setDateString(`${seconds} seconds ago`);
       }
-    }
-  }
+    }    
 
   // call updateTimeDifference once to set the initial value of dateString
   useEffect(() => {
@@ -89,8 +92,8 @@ const Personal = ({ children, description, username, timestamp, subject = "Confe
     <div className="flex items-center pb-3">
         <img src={user.photoURL} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
         <div>
-            <h1 className="font-semibold text-xl text-gray-900">{username}</h1>    
-            <p className='text-xs text-gray-500'>{dateString}</p>
+            <h1 className="font-semibold text-xl text-gray-900">{dateString}</h1>    
+            <p className='text-xs text-gray-500'>Confession</p>
         </div>            
     </div>
     <div className="flex justify-between items-center">

@@ -20,8 +20,8 @@ export default function Home() {
             <div className="flex items-center pb-3">
                 <Image src={spideyImage} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
                 <div>
-                    <h1 className="font-semibold text-xl text-gray-900">SpideyLover</h1>    
-                    <p className='text-xs text-gray-500'>10 minutes ago</p>
+                    <h1 className="font-semibold text-xl text-gray-900">10 mins ago</h1>    
+                    <p className='text-xs text-gray-500'>Confession</p>
                 </div>            
             </div>
             <div className="flex justify-between items-center">

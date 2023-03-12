@@ -11,7 +11,6 @@ const Frontpage = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [isPending, setIsPending] = useState(true);
-  const [user, loading] = useAuthState(auth);
   const [searchQuery, setSearchQuery] = useState("");
 
   const getPosts = async () => {
@@ -48,18 +47,17 @@ const Frontpage = () => {
       <Head>
         <title>Confessay</title>
       </Head>
-      <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">        
-        <div className="md:w-3/4 mx-auto pt-4">
-        <div className="relative w-full max-w-md mx-auto">
-          <input
-            type="text"
-            placeholder="🔍 Search by title or description"
-            className="block w-full pl-5 pr-4 py-2 border rounded-3xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40"
-            onChange={handleSearch}
-          />
-        </div>
-        </div>
-        
+      <div className="md:p-5 w-full max-w-3xl mx-auto pt-20">
+      <div className="relative w-full max-w-xl mx-auto">
+        <input
+          type="text"
+          placeholder="🔍 Search by title or description"
+          className="block w-full pl-5 pr-4 py-2 h-14 border rounded-2xl bg-white bg-opacity-40 backdrop-filter backdrop-blur-md focus:outline-none focus:bg-opacity-40"
+          onChange={handleSearch}
+        />
+      </div>
+
+
         { isPending && <h3 className="text-xl text-center pt-3 text-gray-800">Loading.....</h3> }
         { filteredPosts.map((post) => (
           <Link href={{ pathname: `/${post.id}`, query: { ...post } }} key={post.id}>

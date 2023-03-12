@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a94739e4a03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1892&q=80", children, description, username, timestamp, subject = "Confession" }) => {
+const Front = ({ avatar , children, description, username, timestamp, subject = "Confession" }) => {
   const [dateString, setDateString] = useState("");
 
   const updateTimeDifference = () => {
@@ -10,8 +10,9 @@ const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a9
       const timeDifference = today - messageDate;
       const minutes = Math.floor(timeDifference / (1000 * 60));
       const seconds = Math.floor(timeDifference / 1000);
-
-      if (minutes >= 1) {
+      const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+      
+      if (hours >= 1) {
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         if (days >= 3) {
           if (today.getFullYear() === messageDate.getFullYear()) {
@@ -20,13 +21,15 @@ const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a9
             setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
           }
         } else {
-          setDateString(`${minutes} minutes ago`);
+          setDateString(`${hours} hr${hours > 1 ? 's' : ''} ago`);
         }
+      } else if (minutes >= 1) {
+        setDateString(`${minutes} min${minutes > 1 ? 's' : ''} ago`);
       } else {
-        setDateString(`${seconds} seconds ago`);
+        setDateString(`${seconds} sec${seconds > 1 ? 's' : ''} ago`);
       }
     }
-  }
+  }  
 
   // call updateTimeDifference once to set the initial value of dateString
   useEffect(() => {
@@ -45,10 +48,10 @@ const Front = ({ photoURL = "https://images.unsplash.com/photo-1445810694374-0a9
 
     <div className="py-4 px-8 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
     <div className="flex items-center pb-3">
-        <img src={photoURL} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
+        <img src={avatar} alt="image" className="w-10 h-10 rounded-full object-cover cursor-pointer mr-2" />
         <div>
-            <h1 className="font-semibold text-xl text-gray-900">{username}</h1>    
-            <p className='text-xs text-gray-500'>{dateString}</p>
+            <h1 className="font-semibold text-xl text-gray-900">{dateString}</h1>    
+            <p className='text-xs text-gray-500'>Confession</p>
         </div>            
     </div>
     <div className="flex justify-between items-center">
