@@ -61,7 +61,7 @@ const RulesDropdown = () => {
             </button>
         </h2>
         <div id="accordion-open-body-2" className={style1} aria-labelledby="accordion-open-heading-2">
-            <div className="p-5 text-gray-500 border border-gray-200">
+            <div className="p-5 font-light text-gray-500 border border-gray-200">
             <p className="mb-2">Confessay is a non-profit platform that allows users to confess their negative emotions and relieve themselves of the burden of carrying them.</p>
             <p className="mb-2">The project was created in 2022 and is currently in the prototype phase.</p>            
             </div>
@@ -73,7 +73,7 @@ const RulesDropdown = () => {
             </button>
         </h2>
         <div id="accordion-open-body-2" className={style2} aria-labelledby="accordion-open-heading-2">
-            <div className="p-5 text-gray-500 border border-gray-200">
+            <div className="p-5 font-light text-gray-500 border border-gray-200">
             <p className="mb-2">The aim of Confessay is to allow people to talk about or express emotion freely and to avoid bottling up emotions.</p>
             <p className="mb-2">Describing and talking about an emotion out loud tends to decrease its effect of it.</p>
             <p className="mb-2">Source: <a className="text-cyan-700"  target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/3612492/">research1</a>, <a className="text-cyan-700 "  target="_blank" href="https://www.researchgate.net/publication/323518229_Culture_emotion_suppression_and_disclosure_and_health">research2inPDF</a></p>
@@ -101,7 +101,7 @@ const RulesDropdown = () => {
         </h2>
         <div id="accordion-open-body-2" className={style4} aria-labelledby="accordion-open-heading-2">
             <div className="p-5 font-light border border-gray-200">
-            <p className="mb-2 text-gray-500">Your privacy is safe with us, we do not share your private information with anyone. </p>
+            <p className="mb-2 text-gray-500">Your privacy is safe with us, we do not share your private information with anyone.</p>
             </div>
         </div>
 
@@ -113,7 +113,7 @@ const RulesDropdown = () => {
         </h2>
         <div id="accordion-open-body-2" className={style5} aria-labelledby="accordion-open-heading-2">
             <div className="p-5 font-light border border-gray-200 rounded-lg">                        
-            <p className="mb-2 text-gray-500">You can customise your own nickname and avatar to protect your identity in the <Link href="/Profile/setting"><span className="text-blue-600">setting</span></Link></p>
+            <p className="mb-2 text-gray-500">You will be completely anonymous</p>
             </div>
         </div>
 
