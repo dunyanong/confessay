@@ -50,25 +50,25 @@ const Personal = ({ children, description, username, timestamp, subject = "Confe
         const minutes = Math.floor(timeDifference / (1000 * 60));
         const seconds = Math.floor(timeDifference / 1000);
         const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         
-        if (hours >= 1) {
-          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-          if (days >= 3) {
-            if (today.getFullYear() === messageDate.getFullYear()) {
-              setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
-            } else {
-              setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
-            }
+        if (days > 3) {
+          if (today.getFullYear() === messageDate.getFullYear()) {
+            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
           } else {
-            setDateString(`${hours} hr${hours > 1 ? 's' : ''} ago`);
+            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
           }
+        } else if (days >= 1) {
+          setDateString(`${days} day${days > 1 ? 's' : ''} ago`);
+        } else if (hours >= 1) {
+          setDateString(`${hours} hour${hours > 1 ? 's' : ''} ago`);
         } else if (minutes >= 1) {
-          setDateString(`${minutes} min${minutes > 1 ? 's' : ''} ago`);
+          setDateString(`${minutes} minute${minutes > 1 ? 's' : ''} ago`);
         } else {
-          setDateString(`${seconds} sec${seconds > 1 ? 's' : ''} ago`);
+          setDateString(`${seconds} second${seconds > 1 ? 's' : ''} ago`);
         }
       }
-    }    
+    }       
 
   // call updateTimeDifference once to set the initial value of dateString
   useEffect(() => {
