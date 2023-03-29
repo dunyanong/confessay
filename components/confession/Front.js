@@ -11,18 +11,16 @@ const Front = ({ avatar , children, description, username, timestamp, subject = 
       const minutes = Math.floor(timeDifference / (1000 * 60));
       const seconds = Math.floor(timeDifference / 1000);
       const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-      
-      if (hours >= 1) {
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
+      if (days >= 1) {
         if (days >= 3) {
-          if (today.getFullYear() === messageDate.getFullYear()) {
-            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
-          } else {
-            setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' }));
-          }
+          setDateString(messageDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' }));
         } else {
-          setDateString(`${hours} hr${hours > 1 ? 's' : ''} ago`);
+          setDateString(`${days} day${days > 1 ? 's' : ''} ago`);
         }
+      } else if (hours >= 1) {
+        setDateString(`${hours} hr${hours > 1 ? 's' : ''} ago`);
       } else if (minutes >= 1) {
         setDateString(`${minutes} min${minutes > 1 ? 's' : ''} ago`);
       } else {

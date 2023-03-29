@@ -42,7 +42,7 @@ const Danger = () => {
   };
 
   return (
-    <div className="mt-10 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg my-10 hover:shadow-xl duration-1000">
+    <div className="mt-10">
       {showConfirmSignout && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
