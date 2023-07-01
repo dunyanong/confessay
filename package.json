@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "firebase": "^9.14.0",
     "flowbite": "^1.5.4",
     "flowbite-react": "^0.3.5",
+    "framer-motion": "^10.12.18",
     "js-cookie": "^3.0.1",
     "next": "13.0.4",
     "react": "18.2.0",
